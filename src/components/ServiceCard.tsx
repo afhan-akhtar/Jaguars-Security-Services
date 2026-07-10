@@ -1,12 +1,13 @@
+import Image from "next/image";
 import Link from "next/link";
 import {
-  Shield,
-  HeartPulse,
-  GraduationCap,
+  ArrowRight,
   Building2,
+  GraduationCap,
+  HeartPulse,
+  Shield,
   Sparkles,
   Warehouse,
-  ArrowRight,
   type LucideIcon,
 } from "lucide-react";
 import type { ServiceCategory } from "@/lib/services";
@@ -30,25 +31,34 @@ export default function ServiceCard({ category }: ServiceCardProps) {
   return (
     <Link
       href={`/services/${category.slug}`}
-      className="group relative flex flex-col overflow-hidden rounded-2xl border border-white/10 bg-jaguar-charcoal p-8 transition-all duration-300 hover:border-jaguar-gold/50 hover:shadow-lg hover:shadow-jaguar-gold/5"
+      className="elegant-card card-shine group flex flex-col"
     >
-      <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-full border border-jaguar-gold/30 bg-jaguar-gold/10 transition-colors group-hover:border-jaguar-gold group-hover:bg-jaguar-gold/20">
-        <Icon className="h-7 w-7 text-jaguar-gold-bright" />
+      <div className="relative h-52 overflow-hidden">
+        <Image
+          src={category.image}
+          alt={category.title}
+          fill
+          className="object-cover transition-transform duration-700 group-hover:scale-110"
+          sizes="(max-width: 768px) 100vw, 33vw"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-jaguar-black via-jaguar-black/20 to-transparent" />
+        <div className="absolute bottom-5 left-5 icon-ring h-11 w-11">
+          <Icon className="h-5 w-5 text-jaguar-gold-bright" />
+        </div>
       </div>
 
-      <h3 className="text-xl font-bold text-white group-hover:text-jaguar-gold-bright">
-        {category.title}
-      </h3>
-      <p className="mt-3 flex-1 text-sm leading-relaxed text-white/60">
-        {category.shortDescription}
-      </p>
-
-      <div className="mt-6 flex items-center gap-2 text-sm font-semibold text-jaguar-gold">
-        View Services
-        <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+      <div className="flex flex-1 flex-col p-7">
+        <h3 className="text-lg font-semibold text-white transition-colors group-hover:text-jaguar-gold-bright">
+          {category.title}
+        </h3>
+        <p className="mt-2.5 flex-1 text-sm leading-relaxed text-white/55">
+          {category.shortDescription}
+        </p>
+        <div className="mt-6 flex items-center gap-2 text-xs font-bold tracking-widest text-jaguar-gold-bright uppercase">
+          View Services
+          <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1.5" />
+        </div>
       </div>
-
-      <div className="absolute -right-8 -top-8 h-24 w-24 rounded-full bg-jaguar-gold/5 transition-transform group-hover:scale-150" />
     </Link>
   );
 }

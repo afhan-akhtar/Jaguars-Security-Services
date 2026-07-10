@@ -5,6 +5,7 @@ export interface ServiceCategory {
   description: string;
   services: string[];
   icon: string;
+  image: string;
 }
 
 export const serviceCategories: ServiceCategory[] = [
@@ -16,6 +17,7 @@ export const serviceCategories: ServiceCategory[] = [
     description:
       "Our core security services provide round-the-clock protection for commercial, residential, retail and construction environments across Greater Manchester.",
     icon: "shield",
+    image: "/images/services/security.jpg",
     services: [
       "Manned Guarding",
       "Door Supervision",
@@ -37,6 +39,7 @@ export const serviceCategories: ServiceCategory[] = [
     description:
       "We understand the sensitive nature of healthcare environments and deliver discreet, professional security that supports staff, patients and visitors.",
     icon: "heart-pulse",
+    image: "/images/services/healthcare.jpg",
     services: [
       "NHS Site Security",
       "GP Surgery Security",
@@ -56,6 +59,7 @@ export const serviceCategories: ServiceCategory[] = [
     description:
       "From campus patrols to reception support, we help educational institutions maintain safe, welcoming environments for students and staff.",
     icon: "graduation-cap",
+    image: "/images/services/education.jpg",
     services: [
       "School Security",
       "College Security",
@@ -76,6 +80,7 @@ export const serviceCategories: ServiceCategory[] = [
     description:
       "Extend your on-site team with professional facilities support that keeps buildings running smoothly day to day.",
     icon: "building-2",
+    image: "/images/services/facilities.jpg",
     services: [
       "Reception Support",
       "Concierge Services",
@@ -95,6 +100,7 @@ export const serviceCategories: ServiceCategory[] = [
     description:
       "Reliable cleaning services that complement our security offering — one trusted partner for site protection and presentation.",
     icon: "sparkles",
+    image: "/images/services/cleaning.jpg",
     services: [
       "Office Cleaning",
       "Commercial Cleaning",
@@ -112,6 +118,7 @@ export const serviceCategories: ServiceCategory[] = [
     description:
       "Comprehensive warehouse and distribution centre security — from driver check-in to out-of-hours patrols.",
     icon: "warehouse",
+    image: "/images/services/warehouse.jpg",
     services: [
       "Warehouse Security Guards",
       "Gatehouse Security",
@@ -132,7 +139,7 @@ export const companyInfo = {
   motto: "Reliable • Flexible • Professional",
   pillars: ["PROTECT", "MONITOR", "RESPOND", "ASSURE"],
   phone: "07804 497664",
-  landline: "0161 669 6786",
+  landline: "0161 6696786",
   email: "info@jaguarsecurityservices.co.uk",
   website: "https://www.jaguarsecurityservices.co.uk",
   address: {
@@ -142,7 +149,7 @@ export const companyInfo = {
     full: "355 Broadway, Chadderton, Oldham OL9 8RN",
   },
   description:
-    "We provide professional security-led facilities and cleaning support services for commercial, residential, retail, construction, healthcare, education and warehouse clients. Our aim is to provide clients with a reliable, flexible and professional one-stop solution for security, site protection, building support and day-to-day operational support.",
+    "We provide professional security-led facilities and cleaning support services for commercial, residential, retail, construction, healthcare, education and warehouse clients. Alongside our core security services, we also offer facilities support, reception services, cleaning services, warehouse security services, healthcare security and education sector security. Our aim is to provide clients with a reliable, flexible and professional one-stop solution for security, site protection, building support and day-to-day operational support.",
 };
 
 export const heroServices = [
@@ -151,23 +158,65 @@ export const heroServices = [
     description:
       "Uniformed security officers providing visible deterrence and professional on-site protection.",
     href: "/services/security",
+    image: "/images/services/guarding.jpg",
   },
   {
     title: "Mobile Patrols",
     description:
       "Marked vehicle patrols to deter threats and respond swiftly across multiple sites.",
     href: "/services/security",
+    image: "/images/services/patrol.jpg",
   },
   {
     title: "CCTV Monitoring",
     description:
       "Remote monitoring and real-time alerts to keep your premises secure around the clock.",
     href: "/services/security",
+    image: "/images/services/cctv.jpg",
   },
   {
     title: "Facilities Support",
     description:
       "Reception, concierge and visitor management for seamless front-of-house operations.",
     href: "/services/facilities",
+    image: "/images/services/reception.jpg",
   },
 ];
+
+export const stats = [
+  { value: "24/7", label: "Emergency Response" },
+  { value: "6+", label: "Service Sectors" },
+  { value: "100%", label: "Client Focused" },
+  { value: "SIA", label: "Licensed Officers" },
+];
+
+export const testimonials = [
+  {
+    quote:
+      "Jaguar Security Services provide us with professional, reliable security guarding. Their team is always attentive and gives us complete peace of mind.",
+    author: "Commercial Client",
+    location: "Greater Manchester",
+  },
+  {
+    quote:
+      "We use Jaguar for reception support and out-of-hours security. They respond quickly, communicate clearly and never let us down.",
+    author: "Healthcare Facility",
+    location: "Oldham",
+  },
+  {
+    quote:
+      "From warehouse gatehouse security to mobile patrols, Jaguar deliver a flexible service tailored exactly to our operational needs.",
+    author: "Logistics Partner",
+    location: "Chadderton",
+  },
+];
+
+export const heroImage = "/images/services/hero.jpg";
+
+export const pageImages = {
+  about: "/images/services/about.jpg",
+  contact: "/images/services/contact.jpg",
+  services: "/images/services/security.jpg",
+  ctaQuote: "/images/services/office.jpg",
+  ctaExplore: "/images/services/facilities.jpg",
+};

@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowRight, CheckCircle } from "lucide-react";
 import { serviceCategories } from "@/lib/services";
+import AnimatedSection from "@/components/AnimatedSection";
 import CTABlock from "@/components/CTABlock";
+import PageHero from "@/components/PageHero";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -36,67 +39,82 @@ export default async function ServiceDetailPage({ params }: PageProps) {
 
   return (
     <>
-      <section className="relative overflow-hidden bg-jaguar-charcoal py-20">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(212,160,23,0.12)_0%,_transparent_60%)]" />
-        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <Link
-            href="/services"
-            className="inline-flex items-center gap-1 text-sm text-jaguar-gold hover:text-jaguar-gold-bright"
-          >
-            &larr; All Services
-          </Link>
-          <h1 className="mt-6 text-4xl font-extrabold text-white sm:text-5xl">
-            {category.title}
-          </h1>
-          <p className="mt-4 max-w-2xl text-lg text-white/60">
-            {category.description}
-          </p>
-        </div>
-      </section>
+      <PageHero
+        label="OUR SERVICES"
+        title={category.title}
+        description={category.description}
+        image={category.image}
+      >
+        <Link
+          href="/services"
+          className="animate-fade-up-delay-3 mt-6 inline-flex items-center gap-1 text-sm font-bold text-jaguar-gold-bright hover:text-white"
+        >
+          &larr; All Services
+        </Link>
+      </PageHero>
 
-      <section className="py-20">
+      <section className="section-dark py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-3">
             <div className="lg:col-span-2">
-              <h2 className="text-2xl font-bold text-white">
-                Services We Provide
-              </h2>
-              <div className="mt-8 grid gap-4 sm:grid-cols-2">
-                {category.services.map((service) => (
-                  <div
-                    key={service}
-                    className="flex items-start gap-3 rounded-xl border border-white/10 bg-jaguar-charcoal p-5 transition-colors hover:border-jaguar-gold/30"
-                  >
-                    <CheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-jaguar-gold-bright" />
-                    <span className="text-sm font-medium text-white/90">
-                      {service}
-                    </span>
-                  </div>
+              <AnimatedSection>
+                <h2 className="font-[family-name:var(--font-cormorant)] text-3xl font-bold text-white">
+                  Services We Provide
+                </h2>
+                <p className="mt-3 text-white/65">
+                  Comprehensive {category.title.toLowerCase()} tailored to
+                  your site requirements.
+                </p>
+              </AnimatedSection>
+
+              <div className="mt-10 grid gap-4 sm:grid-cols-2">
+                {category.services.map((service, i) => (
+                  <AnimatedSection key={service} delay={i * 50}>
+                    <div className="elegant-card flex items-start gap-3 p-5">
+                      <CheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-jaguar-gold-bright" />
+                      <span className="text-sm font-medium text-white/90">
+                        {service}
+                      </span>
+                    </div>
+                  </AnimatedSection>
                 ))}
               </div>
             </div>
 
-            <div className="rounded-2xl border border-jaguar-gold/30 bg-jaguar-charcoal p-8">
-              <h3 className="text-xl font-bold text-jaguar-gold-bright">
-                Request This Service
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed text-white/60">
-                Contact us today for a free consultation and tailored quote for
-                your {category.title.toLowerCase()} requirements.
-              </p>
-              <Link
-                href="/contact"
-                className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-jaguar-gold-bright px-6 py-3.5 text-sm font-bold text-jaguar-black transition-all hover:bg-jaguar-gold-light"
-              >
-                Get a Quote
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
+            <AnimatedSection delay={200}>
+              <div className="elegant-card sticky top-28 overflow-hidden">
+                <div className="relative h-48">
+                  <Image
+                    src={category.image}
+                    alt={category.title}
+                    fill
+                    className="object-cover"
+                    sizes="400px"
+                  />
+                </div>
+                <div className="p-8">
+                  <h3 className="font-[family-name:var(--font-cormorant)] text-2xl font-bold text-jaguar-gold-bright">
+                    Request This Service
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-white/65">
+                    Contact us today for a free consultation and tailored quote
+                    for your {category.title.toLowerCase()} requirements.
+                  </p>
+                  <Link
+                    href="/contact"
+                    className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-jaguar-gold-bright px-6 py-3.5 text-sm font-bold text-jaguar-black transition-all hover:bg-jaguar-gold gold-glow"
+                  >
+                    Get a Quote
+                    <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </div>
+              </div>
+            </AnimatedSection>
           </div>
         </div>
       </section>
 
-      <section className="border-t border-white/10 bg-jaguar-charcoal py-16">
+      <section className="section-charcoal py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <h2 className="text-xl font-bold text-white">Other Services</h2>
           <div className="mt-6 flex flex-wrap gap-3">
@@ -104,7 +122,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
               <Link
                 key={service.slug}
                 href={`/services/${service.slug}`}
-                className="rounded-full border border-white/10 px-5 py-2 text-sm text-white/70 transition-all hover:border-jaguar-gold hover:text-jaguar-gold-bright"
+                className="rounded-full border border-white/15 bg-jaguar-black/40 px-5 py-2 text-sm font-medium text-white/75 transition-all hover:border-jaguar-gold-bright hover:text-jaguar-gold-bright"
               >
                 {service.title}
               </Link>
@@ -119,6 +137,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
         description="Speak to our team for professional, reliable security services across Greater Manchester."
         buttonText="Contact Us Today"
         buttonHref="/contact"
+        image={category.image}
       />
     </>
   );

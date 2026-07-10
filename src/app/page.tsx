@@ -1,8 +1,29 @@
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Shield, Eye, Radio, CheckCircle } from "lucide-react";
-import { companyInfo, serviceCategories, heroServices } from "@/lib/services";
-import ServiceCard from "@/components/ServiceCard";
+import {
+  ArrowRight,
+  CheckCircle,
+  Eye,
+  Quote,
+  Radio,
+  Shield,
+} from "lucide-react";
+import {
+  companyInfo,
+  heroImage,
+  heroServices,
+  pageImages,
+  serviceCategories,
+  testimonials,
+} from "@/lib/services";
+import AnimatedSection from "@/components/AnimatedSection";
 import CTABlock from "@/components/CTABlock";
+import FeaturedServiceCard from "@/components/FeaturedServiceCard";
+import GoldButton from "@/components/GoldButton";
+import PillarBar from "@/components/PillarBar";
+import SectionHeading from "@/components/SectionHeading";
+import ServiceCard from "@/components/ServiceCard";
+import StatsBar from "@/components/StatsBar";
 
 const whyChooseUs = [
   {
@@ -35,157 +56,211 @@ export default function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="relative min-h-[85vh] overflow-hidden bg-jaguar-black">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(212,160,23,0.15)_0%,_transparent_60%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,_rgba(255,210,0,0.08)_0%,_transparent_50%)]" />
+      <section className="section-dark mesh-gold relative min-h-[92vh] overflow-hidden">
+        <Image
+          src={heroImage}
+          alt="Professional security services"
+          fill
+          priority
+          className="object-cover opacity-35"
+          sizes="100vw"
+        />
+        <div className="hero-overlay absolute inset-0" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_20%,rgba(232,185,35,0.08)_0%,transparent_50%)]" />
 
-        <div className="relative mx-auto flex min-h-[85vh] max-w-7xl flex-col justify-center px-4 py-20 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            <p className="animate-fade-up mb-4 text-sm font-bold tracking-[0.3em] text-jaguar-gold">
-              {companyInfo.motto}
-            </p>
-            <h1 className="animate-fade-up-delay-1 text-4xl font-extrabold leading-tight tracking-tight text-white sm:text-5xl lg:text-6xl">
-              Professional Security Services in{" "}
-              <span className="text-gradient-gold">Greater Manchester</span>
-            </h1>
-            <p className="animate-fade-up-delay-2 mt-6 max-w-2xl text-lg leading-relaxed text-white/70">
-              {companyInfo.description}
-            </p>
-            <div className="animate-fade-up-delay-2 mt-10 flex flex-wrap gap-4">
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 rounded-full bg-jaguar-gold-bright px-8 py-4 text-sm font-bold tracking-wide text-jaguar-black transition-all hover:bg-jaguar-gold-light"
-              >
-                Get a Free Quote
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-              <Link
-                href="/services"
-                className="inline-flex items-center gap-2 rounded-full border-2 border-white/30 px-8 py-4 text-sm font-bold tracking-wide text-white transition-all hover:border-jaguar-gold-bright hover:text-jaguar-gold-bright"
-              >
-                View All Services
-              </Link>
+        <div className="relative mx-auto flex min-h-[92vh] max-w-7xl flex-col justify-center px-4 py-28 sm:px-6 lg:px-8">
+          <div className="grid items-center gap-16 lg:grid-cols-[1.1fr_0.9fr]">
+            <div className="max-w-2xl">
+              <p className="label-tag animate-fade-up">{companyInfo.motto}</p>
+              <h1 className="animate-fade-up-delay-1 mt-6 font-[family-name:var(--font-cormorant)] text-5xl font-semibold leading-[1.06] text-white sm:text-6xl lg:text-[4.25rem]">
+                Shaping Your{" "}
+                <span className="text-gradient-gold">Security</span> in Greater
+                Manchester
+              </h1>
+              <p className="animate-fade-up-delay-2 mt-6 text-lg leading-relaxed text-white/65">
+                Professional manned guarding, facilities support and cleaning —
+                delivered by a trusted local team with 24/7 coverage.
+              </p>
+              <div className="animate-fade-up-delay-3 mt-10 flex flex-wrap gap-4">
+                <GoldButton href="/contact" variant="primary">
+                  Get a Free Quote
+                </GoldButton>
+                <GoldButton href="/services" variant="outline">
+                  View All Services
+                </GoldButton>
+              </div>
+              <div className="animate-fade-up-delay-3 mt-10 flex flex-wrap gap-x-8 gap-y-3 border-t border-white/10 pt-8">
+                {["SIA Licensed", "24/7 Response", "Greater Manchester"].map(
+                  (badge) => (
+                    <span
+                      key={badge}
+                      className="flex items-center gap-2 text-xs font-semibold tracking-widest text-white/50 uppercase"
+                    >
+                      <span className="h-1 w-1 rounded-full bg-jaguar-gold-bright" />
+                      {badge}
+                    </span>
+                  )
+                )}
+              </div>
+            </div>
+
+            <div className="animate-scale-in hidden justify-end lg:flex">
+              <div className="relative">
+                <div className="absolute -inset-8 rounded-full bg-jaguar-gold-bright/5 blur-3xl" />
+                <div className="animate-float relative h-72 w-72">
+                  <Image
+                    src="/images/logo.png"
+                    alt="Jaguar Security Services"
+                    fill
+                    className="object-contain drop-shadow-2xl"
+                    sizes="288px"
+                  />
+                </div>
+              </div>
             </div>
           </div>
-
-          <div className="mt-16 flex flex-wrap gap-2 border-t border-white/10 pt-8">
-            {companyInfo.pillars.map((pillar) => (
-              <span
-                key={pillar}
-                className="rounded-full border border-jaguar-gold/30 px-4 py-1.5 text-xs font-bold tracking-widest text-jaguar-gold"
-              >
-                {pillar}
-              </span>
-            ))}
-          </div>
         </div>
+
+        <div className="gold-line absolute bottom-0 left-0 right-0" />
       </section>
 
-      {/* Featured Services */}
-      <section className="bg-jaguar-charcoal py-20">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <p className="text-sm font-bold tracking-[0.3em] text-jaguar-gold">
-              WHAT WE OFFER
-            </p>
-            <h2 className="mt-3 text-3xl font-extrabold text-white sm:text-4xl">
-              Securing Your Environment
-            </h2>
-            <p className="mx-auto mt-4 max-w-2xl text-white/60">
-              Choose our premium security services for complete peace of mind.
-              Expert protection tailored to your needs.
-            </p>
-          </div>
+      <PillarBar />
+      <StatsBar />
 
-          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {heroServices.map((service) => (
-              <Link
-                key={service.title}
-                href={service.href}
-                className="group relative overflow-hidden rounded-2xl border border-white/10 bg-jaguar-dark p-8 transition-all hover:border-jaguar-gold/40"
-              >
-                <h3 className="text-lg font-bold text-white group-hover:text-jaguar-gold-bright">
-                  {service.title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-white/60">
-                  {service.description}
-                </p>
-                <span className="mt-6 inline-flex items-center gap-1 text-sm font-semibold text-jaguar-gold">
-                  Learn More
-                  <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
-                </span>
-              </Link>
+      {/* Featured Services */}
+      <section className="section-dark section-padding">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <AnimatedSection>
+            <SectionHeading
+              label="What We Offer"
+              title="Securing Your Environment"
+              description="Choose our premium security services for complete peace of mind. Expert protection tailored to your needs."
+              centered
+              dark
+            />
+          </AnimatedSection>
+
+          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {heroServices.map((service, i) => (
+              <AnimatedSection key={service.title} delay={i * 100}>
+                <FeaturedServiceCard
+                  title={service.title}
+                  description={service.description}
+                  image={service.image}
+                  href={service.href}
+                />
+              </AnimatedSection>
             ))}
           </div>
         </div>
       </section>
 
       {/* All Service Categories */}
-      <section className="py-20">
+      <section className="section-charcoal section-padding">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
-            <div>
-              <p className="text-sm font-bold tracking-[0.3em] text-jaguar-gold">
-                OUR SERVICES
-              </p>
-              <h2 className="mt-3 text-3xl font-extrabold text-white sm:text-4xl">
-                Complete Protection Solutions
-              </h2>
+          <AnimatedSection>
+            <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
+              <SectionHeading
+                label="Our Services"
+                title="Complete Protection Solutions"
+                description="One trusted partner for security, facilities support, cleaning and sector-specific protection."
+                dark
+              />
+              <Link
+                href="/services"
+                className="inline-flex shrink-0 items-center gap-2 text-xs font-bold tracking-widest text-jaguar-gold-bright uppercase hover:text-white"
+              >
+                View All Services
+                <ArrowRight className="h-4 w-4" />
+              </Link>
             </div>
-            <Link
-              href="/services"
-              className="inline-flex items-center gap-2 text-sm font-semibold text-jaguar-gold-bright hover:underline"
-            >
-              View All Services
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
+          </AnimatedSection>
 
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {serviceCategories.map((category) => (
-              <ServiceCard key={category.slug} category={category} />
+          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {serviceCategories.map((category, i) => (
+              <AnimatedSection key={category.slug} delay={i * 80}>
+                <ServiceCard category={category} />
+              </AnimatedSection>
             ))}
           </div>
         </div>
       </section>
 
       {/* Why Choose Us */}
-      <section className="bg-jaguar-cream py-20">
+      <section className="section-dark section-padding">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <p className="text-sm font-bold tracking-[0.3em] text-jaguar-gold">
-              WHY CHOOSE US
-            </p>
-            <h2 className="mt-3 text-3xl font-extrabold text-jaguar-black sm:text-4xl">
-              Your Trusted Security Partner
-            </h2>
-          </div>
+          <AnimatedSection>
+            <SectionHeading
+              label="Why Choose Us"
+              title="Your Trusted Security Partner"
+              description="Reliable, flexible and professional — delivering complete peace of mind across every sector."
+              centered
+              dark
+            />
+          </AnimatedSection>
 
-          <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-            {whyChooseUs.map((item) => (
-              <div key={item.title} className="text-center">
-                <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-jaguar-black">
-                  <item.icon className="h-7 w-7 text-jaguar-gold-bright" />
+          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {whyChooseUs.map((item, i) => (
+              <AnimatedSection key={item.title} delay={i * 100}>
+                <div className="elegant-card card-shine p-8 text-center">
+                  <div className="icon-ring mx-auto h-16 w-16">
+                    <item.icon className="h-7 w-7 text-jaguar-gold-bright" />
+                  </div>
+                  <h3 className="mt-6 text-lg font-semibold text-white">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-white/55">
+                    {item.description}
+                  </p>
                 </div>
-                <h3 className="mt-5 text-lg font-bold text-jaguar-black">
-                  {item.title}
-                </h3>
-                <p className="mt-2 text-sm leading-relaxed text-jaguar-black/60">
-                  {item.description}
-                </p>
-              </div>
+              </AnimatedSection>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CTA Blocks */}
+      {/* Testimonials */}
+      <section className="section-charcoal section-padding">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <AnimatedSection>
+            <SectionHeading
+              label="Client Feedback"
+              title="What Clients Say About Us"
+              centered
+              dark
+            />
+          </AnimatedSection>
+
+          <div className="mt-16 grid gap-6 md:grid-cols-3">
+            {testimonials.map((item, i) => (
+              <AnimatedSection key={item.author} delay={i * 120}>
+                <div className="elegant-card flex h-full flex-col border-l-2 border-l-jaguar-gold-bright/40 p-8">
+                  <Quote className="h-7 w-7 text-jaguar-gold-bright/50" />
+                  <p className="mt-5 flex-1 font-[family-name:var(--font-cormorant)] text-lg leading-relaxed text-white/80 italic">
+                    &ldquo;{item.quote}&rdquo;
+                  </p>
+                  <div className="mt-8 border-t border-white/8 pt-5">
+                    <p className="font-semibold text-jaguar-gold-bright">
+                      {item.author}
+                    </p>
+                    <p className="mt-1 text-xs tracking-wide text-white/45">
+                      {item.location}
+                    </p>
+                  </div>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <CTABlock
         variant="gold"
         title="Need Security You Can Trust?"
         description="Get in touch today for a free, no-obligation quote. Our team is ready to protect your premises."
         buttonText="Request a Quote"
         buttonHref="/contact"
+        image={pageImages.ctaQuote}
       />
       <CTABlock
         variant="dark"
@@ -193,6 +268,7 @@ export default function HomePage() {
         description="From manned guarding to cleaning and facilities support — we cover all your operational needs under one roof."
         buttonText="Explore Services"
         buttonHref="/services"
+        image={pageImages.ctaExplore}
       />
     </>
   );

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 
 interface CTABlockProps {
@@ -7,7 +8,7 @@ interface CTABlockProps {
   buttonText: string;
   buttonHref: string;
   variant: "gold" | "dark";
-  secondary?: boolean;
+  image?: string;
 }
 
 export default function CTABlock({
@@ -16,64 +17,70 @@ export default function CTABlock({
   buttonText,
   buttonHref,
   variant,
+  image,
 }: CTABlockProps) {
   const isGold = variant === "gold";
 
   return (
     <section
       className={`relative overflow-hidden ${
-        isGold ? "bg-jaguar-gold-bright" : "bg-jaguar-dark"
+        isGold
+          ? "bg-gradient-to-r from-jaguar-gold via-jaguar-gold-bright to-jaguar-gold-light"
+          : "section-slate mesh-gold border-t border-white/5"
       }`}
     >
-      <div className="mx-auto flex max-w-7xl flex-col items-center gap-8 px-4 py-16 sm:px-6 md:flex-row md:py-20 lg:px-8">
+      {!isGold && (
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_right,rgba(232,185,35,0.06)_0%,transparent_55%)]" />
+      )}
+
+      <div className="relative mx-auto flex max-w-7xl flex-col items-center gap-12 px-4 py-20 sm:px-6 md:flex-row lg:px-8">
         <div className="flex-1">
+          {!isGold && <p className="label-tag mb-4">Get Started</p>}
           <h2
-            className={`text-3xl font-extrabold tracking-tight sm:text-4xl ${
+            className={`font-[family-name:var(--font-cormorant)] text-3xl font-semibold leading-tight sm:text-4xl lg:text-[2.75rem] ${
               isGold ? "text-jaguar-black" : "text-white"
             }`}
           >
             {title}
           </h2>
           <p
-            className={`mt-4 max-w-xl text-lg ${
-              isGold ? "text-jaguar-black/80" : "text-white/70"
+            className={`mt-5 max-w-xl text-base leading-relaxed sm:text-lg ${
+              isGold ? "text-jaguar-black/75" : "text-white/60"
             }`}
           >
             {description}
           </p>
           <Link
             href={buttonHref}
-            className={`mt-8 inline-flex items-center gap-2 rounded-full border-2 px-8 py-3 text-sm font-bold tracking-wide transition-all ${
+            className={`mt-8 inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-xs font-bold tracking-[0.15em] uppercase transition-all duration-300 ${
               isGold
-                ? "border-jaguar-black text-jaguar-black hover:bg-jaguar-black hover:text-jaguar-gold-bright"
-                : "border-white text-white hover:bg-white hover:text-jaguar-black"
+                ? "bg-jaguar-black text-jaguar-gold-bright hover:bg-jaguar-charcoal"
+                : "border border-jaguar-gold-bright text-jaguar-gold-bright hover:bg-jaguar-gold-bright hover:text-jaguar-black"
             }`}
           >
             {buttonText}
-            <ArrowRight className="h-4 w-4" />
+            <ArrowRight className="h-3.5 w-3.5" />
           </Link>
         </div>
 
-        <div className="relative hidden h-48 w-72 shrink-0 md:block lg:h-56 lg:w-80">
-          <div
-            className={`absolute inset-0 rounded-2xl ${
-              isGold ? "bg-jaguar-black/10" : "bg-jaguar-gold/10"
-            }`}
-          />
-          <div
-            className={`absolute -right-4 top-4 h-full w-full rounded-2xl border-2 ${
-              isGold ? "border-jaguar-black/20" : "border-jaguar-gold/30"
-            } flex items-center justify-center`}
-          >
-            <span
-              className={`text-6xl font-black opacity-20 ${
-                isGold ? "text-jaguar-black" : "text-jaguar-gold"
+        {image && (
+          <div className="relative hidden h-60 w-80 shrink-0 overflow-hidden rounded-2xl border border-white/10 shadow-2xl md:block lg:h-64 lg:w-96">
+            <Image
+              src={image}
+              alt=""
+              fill
+              className="object-cover"
+              sizes="384px"
+            />
+            <div
+              className={`absolute inset-0 ${
+                isGold
+                  ? "bg-gradient-to-t from-jaguar-black/30 to-transparent"
+                  : "bg-gradient-to-t from-jaguar-black/70 to-transparent"
               }`}
-            >
-              JSS
-            </span>
+            />
           </div>
-        </div>
+        )}
       </div>
     </section>
   );

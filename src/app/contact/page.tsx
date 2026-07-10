@@ -1,116 +1,118 @@
 import type { Metadata } from "next";
-import { Phone, Mail, MapPin, Clock } from "lucide-react";
-import { companyInfo } from "@/lib/services";
+import { Clock, Mail, MapPin, Phone } from "lucide-react";
+import { companyInfo, pageImages } from "@/lib/services";
+import AnimatedSection from "@/components/AnimatedSection";
 import ContactForm from "@/components/ContactForm";
+import PageHero from "@/components/PageHero";
+import PillarBar from "@/components/PillarBar";
 
 export const metadata: Metadata = {
   title: "Contact Us",
   description: `Get in touch with ${companyInfo.name} for a free security quote. Call ${companyInfo.phone} or email ${companyInfo.email}.`,
 };
 
+const contactItems = [
+  {
+    icon: Phone,
+    label: "Phone",
+    content: (
+      <>
+        <p>Mobile: {companyInfo.phone}</p>
+        <p className="mt-1 text-white/50">
+          Landline: {companyInfo.landline}
+        </p>
+      </>
+    ),
+    href: `tel:${companyInfo.phone.replace(/\s/g, "")}`,
+  },
+  {
+    icon: Mail,
+    label: "Email",
+    content: <p>{companyInfo.email}</p>,
+    href: `mailto:${companyInfo.email}`,
+  },
+  {
+    icon: MapPin,
+    label: "Address",
+    content: (
+      <>
+        <p>{companyInfo.address.line1}</p>
+        <p>{companyInfo.address.line2}</p>
+        <p>{companyInfo.address.postcode}</p>
+      </>
+    ),
+  },
+  {
+    icon: Clock,
+    label: "Availability",
+    content: (
+      <>
+        <p>24/7 Emergency Response</p>
+        <p className="mt-1 text-white/50">
+          Office enquiries: Mon – Fri, 9am – 5pm
+        </p>
+      </>
+    ),
+  },
+];
+
 export default function ContactPage() {
   return (
     <>
-      <section className="relative overflow-hidden bg-jaguar-charcoal py-20">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(212,160,23,0.1)_0%,_transparent_70%)]" />
-        <div className="relative mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
-          <p className="text-sm font-bold tracking-[0.3em] text-jaguar-gold">
-            GET IN TOUCH
-          </p>
-          <h1 className="mt-3 text-4xl font-extrabold text-white sm:text-5xl">
-            Contact Us
-          </h1>
-          <p className="mx-auto mt-4 max-w-2xl text-lg text-white/60">
-            Ready to discuss your security requirements? Fill in the form below
-            or reach us directly.
-          </p>
-        </div>
-      </section>
+      <PageHero
+        label="GET IN TOUCH"
+        title="Contact Us"
+        description="Ready to discuss your security requirements? Fill in the form below or reach us directly."
+        image={pageImages.contact}
+        centered
+      />
 
-      <section className="py-20">
+      <PillarBar />
+
+      <section className="section-dark mesh-gold py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-16 lg:grid-cols-5">
             <div className="lg:col-span-2">
-              <h2 className="text-2xl font-bold text-white">
-                Contact Details
-              </h2>
-              <p className="mt-3 text-white/60">
-                We&apos;re here to help with all your security and facilities
-                needs.
-              </p>
+              <AnimatedSection>
+                <h2 className="font-[family-name:var(--font-cormorant)] text-3xl font-bold text-white">
+                  Contact Details
+                </h2>
+                <p className="mt-3 text-white/65">
+                  We&apos;re here to help with all your security and facilities
+                  needs.
+                </p>
+              </AnimatedSection>
 
-              <div className="mt-10 space-y-6">
-                <a
-                  href={`tel:${companyInfo.phone.replace(/\s/g, "")}`}
-                  className="flex items-start gap-4 rounded-xl border border-white/10 bg-jaguar-charcoal p-5 transition-colors hover:border-jaguar-gold/30"
-                >
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-jaguar-gold/10">
-                    <Phone className="h-5 w-5 text-jaguar-gold-bright" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium text-white/50">Mobile</p>
-                    <p className="mt-1 font-semibold text-white">
-                      {companyInfo.phone}
-                    </p>
-                    <p className="mt-2 text-sm text-white/50">
-                      Landline: {companyInfo.landline}
-                    </p>
-                  </div>
-                </a>
-
-                <a
-                  href={`mailto:${companyInfo.email}`}
-                  className="flex items-start gap-4 rounded-xl border border-white/10 bg-jaguar-charcoal p-5 transition-colors hover:border-jaguar-gold/30"
-                >
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-jaguar-gold/10">
-                    <Mail className="h-5 w-5 text-jaguar-gold-bright" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium text-white/50">Email</p>
-                    <p className="mt-1 font-semibold text-white">
-                      {companyInfo.email}
-                    </p>
-                  </div>
-                </a>
-
-                <div className="flex items-start gap-4 rounded-xl border border-white/10 bg-jaguar-charcoal p-5">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-jaguar-gold/10">
-                    <MapPin className="h-5 w-5 text-jaguar-gold-bright" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium text-white/50">Address</p>
-                    <p className="mt-1 font-semibold text-white">
-                      {companyInfo.address.line1}
-                      <br />
-                      {companyInfo.address.line2}
-                      <br />
-                      {companyInfo.address.postcode}
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex items-start gap-4 rounded-xl border border-white/10 bg-jaguar-charcoal p-5">
-                  <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-jaguar-gold/10">
-                    <Clock className="h-5 w-5 text-jaguar-gold-bright" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium text-white/50">
-                      Availability
-                    </p>
-                    <p className="mt-1 font-semibold text-white">
-                      24/7 Emergency Response
-                    </p>
-                    <p className="mt-1 text-sm text-white/50">
-                      Office enquiries: Mon – Fri, 9am – 5pm
-                    </p>
-                  </div>
-                </div>
+              <div className="mt-10 space-y-5">
+                {contactItems.map((item, i) => {
+                  const Wrapper = item.href ? "a" : "div";
+                  return (
+                    <AnimatedSection key={item.label} delay={i * 100}>
+                      <Wrapper
+                        {...(item.href ? { href: item.href } : {})}
+                        className="card-dark flex items-start gap-4 rounded-xl p-5"
+                      >
+                        <div className="icon-ring h-12 w-12 shrink-0">
+                          <item.icon className="h-5 w-5 text-jaguar-gold-bright" />
+                        </div>
+                        <div>
+                          <p className="text-xs font-bold tracking-[0.2em] text-jaguar-gold-bright">
+                            {item.label}
+                          </p>
+                          <div className="mt-2 text-sm font-medium text-white">
+                            {item.content}
+                          </div>
+                        </div>
+                      </Wrapper>
+                    </AnimatedSection>
+                  );
+                })}
               </div>
             </div>
 
-            <div className="lg:col-span-3">
-              <div className="rounded-2xl border border-white/10 bg-jaguar-charcoal p-8 sm:p-10">
-                <h2 className="text-2xl font-bold text-white">
+            <AnimatedSection delay={200} className="lg:col-span-3">
+              <div className="rounded-2xl glass-card p-8 sm:p-10">
+                <h2 className="font-[family-name:var(--font-cormorant)] text-3xl font-bold text-white">
                   Send Us an Enquiry
                 </h2>
                 <p className="mt-2 text-sm text-white/50">
@@ -121,7 +123,7 @@ export default function ContactPage() {
                   <ContactForm />
                 </div>
               </div>
-            </div>
+            </AnimatedSection>
           </div>
         </div>
       </section>

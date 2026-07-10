@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
-import { Send, CheckCircle, AlertCircle } from "lucide-react";
+import { AlertCircle, CheckCircle, Send } from "lucide-react";
 import { serviceCategories } from "@/lib/services";
 
 type FormStatus = "idle" | "loading" | "success" | "error";
@@ -51,9 +51,9 @@ export default function ContactForm() {
 
   if (status === "success") {
     return (
-      <div className="flex flex-col items-center rounded-2xl border border-jaguar-gold/30 bg-jaguar-gold/5 p-12 text-center">
+      <div className="animate-scale-in flex flex-col items-center rounded-2xl border border-jaguar-gold/30 bg-jaguar-gold/10 p-12 text-center">
         <CheckCircle className="h-16 w-16 text-jaguar-gold-bright" />
-        <h3 className="mt-4 text-2xl font-bold text-white">
+        <h3 className="mt-4 font-[family-name:var(--font-cormorant)] text-2xl font-bold text-white">
           Message Sent Successfully
         </h3>
         <p className="mt-2 text-white/60">
@@ -62,7 +62,7 @@ export default function ContactForm() {
         <button
           type="button"
           onClick={() => setStatus("idle")}
-          className="mt-6 text-sm font-semibold text-jaguar-gold-bright hover:underline"
+          className="mt-6 text-sm font-bold text-jaguar-gold-bright hover:text-white"
         >
           Send another message
         </button>
@@ -70,11 +70,17 @@ export default function ContactForm() {
     );
   }
 
+  const inputClass =
+    "w-full rounded-xl border border-white/10 bg-jaguar-black/60 px-4 py-3.5 text-white placeholder:text-white/30 transition-colors focus:border-jaguar-gold-bright focus:outline-none focus:ring-1 focus:ring-jaguar-gold-bright/30";
+
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <div className="grid gap-6 sm:grid-cols-2">
         <div>
-          <label htmlFor="name" className="mb-2 block text-sm font-medium text-white/80">
+          <label
+            htmlFor="name"
+            className="mb-2 block text-sm font-medium text-white/80"
+          >
             Full Name *
           </label>
           <input
@@ -82,12 +88,15 @@ export default function ContactForm() {
             id="name"
             name="name"
             required
-            className="w-full rounded-lg border border-white/10 bg-jaguar-dark px-4 py-3 text-white placeholder:text-white/30 focus:border-jaguar-gold focus:outline-none focus:ring-1 focus:ring-jaguar-gold"
+            className={inputClass}
             placeholder="Your name"
           />
         </div>
         <div>
-          <label htmlFor="email" className="mb-2 block text-sm font-medium text-white/80">
+          <label
+            htmlFor="email"
+            className="mb-2 block text-sm font-medium text-white/80"
+          >
             Email Address *
           </label>
           <input
@@ -95,7 +104,7 @@ export default function ContactForm() {
             id="email"
             name="email"
             required
-            className="w-full rounded-lg border border-white/10 bg-jaguar-dark px-4 py-3 text-white placeholder:text-white/30 focus:border-jaguar-gold focus:outline-none focus:ring-1 focus:ring-jaguar-gold"
+            className={inputClass}
             placeholder="you@example.com"
           />
         </div>
@@ -103,25 +112,31 @@ export default function ContactForm() {
 
       <div className="grid gap-6 sm:grid-cols-2">
         <div>
-          <label htmlFor="phone" className="mb-2 block text-sm font-medium text-white/80">
+          <label
+            htmlFor="phone"
+            className="mb-2 block text-sm font-medium text-white/80"
+          >
             Phone Number
           </label>
           <input
             type="tel"
             id="phone"
             name="phone"
-            className="w-full rounded-lg border border-white/10 bg-jaguar-dark px-4 py-3 text-white placeholder:text-white/30 focus:border-jaguar-gold focus:outline-none focus:ring-1 focus:ring-jaguar-gold"
+            className={inputClass}
             placeholder="07XXX XXXXXX"
           />
         </div>
         <div>
-          <label htmlFor="service" className="mb-2 block text-sm font-medium text-white/80">
+          <label
+            htmlFor="service"
+            className="mb-2 block text-sm font-medium text-white/80"
+          >
             Service Required
           </label>
           <select
             id="service"
             name="service"
-            className="w-full rounded-lg border border-white/10 bg-jaguar-dark px-4 py-3 text-white focus:border-jaguar-gold focus:outline-none focus:ring-1 focus:ring-jaguar-gold"
+            className={inputClass}
             defaultValue=""
           >
             <option value="" disabled>
@@ -138,7 +153,10 @@ export default function ContactForm() {
       </div>
 
       <div>
-        <label htmlFor="message" className="mb-2 block text-sm font-medium text-white/80">
+        <label
+          htmlFor="message"
+          className="mb-2 block text-sm font-medium text-white/80"
+        >
           Message *
         </label>
         <textarea
@@ -146,13 +164,13 @@ export default function ContactForm() {
           name="message"
           required
           rows={5}
-          className="w-full resize-none rounded-lg border border-white/10 bg-jaguar-dark px-4 py-3 text-white placeholder:text-white/30 focus:border-jaguar-gold focus:outline-none focus:ring-1 focus:ring-jaguar-gold"
+          className={`${inputClass} resize-none`}
           placeholder="Tell us about your security requirements..."
         />
       </div>
 
       {status === "error" && (
-        <div className="flex items-center gap-2 rounded-lg border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-400">
+        <div className="flex items-center gap-2 rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-400">
           <AlertCircle className="h-4 w-4 shrink-0" />
           {errorMessage}
         </div>
@@ -161,7 +179,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={status === "loading"}
-        className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-jaguar-gold-bright px-8 py-4 text-sm font-bold tracking-wide text-jaguar-black transition-all hover:bg-jaguar-gold-light disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
+        className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-jaguar-gold-bright px-8 py-4 text-sm font-bold tracking-wide text-jaguar-black transition-all hover:bg-jaguar-gold-light disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto gold-glow"
       >
         {status === "loading" ? (
           "Sending..."
@@ -173,7 +191,7 @@ export default function ContactForm() {
         )}
       </button>
 
-      <p className="text-xs text-white/40">
+      <p className="text-xs text-white/35">
         By submitting this form, you agree to your data being processed by
         Jaguar Security Services Ltd for the purpose of responding to your
         enquiry.
