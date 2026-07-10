@@ -16,16 +16,15 @@ export const metadata: Metadata = {
 const contactItems = [
   {
     icon: Phone,
-    label: "Phone",
-    content: (
-      <>
-        <p>Mobile: {companyInfo.phone}</p>
-        <p className="mt-1 text-muted">
-          Landline: {companyInfo.landline}
-        </p>
-      </>
-    ),
+    label: "Mobile",
+    content: <p>{companyInfo.phone}</p>,
     href: `tel:${companyInfo.phone.replace(/\s/g, "")}`,
+  },
+  {
+    icon: Phone,
+    label: "Landline",
+    content: <p>{companyInfo.landline}</p>,
+    href: `tel:${companyInfo.landline.replace(/\s/g, "")}`,
   },
   {
     icon: Mail,

@@ -13,9 +13,9 @@ export default function Footer() {
           <div className="lg:col-span-4">
             <Logo size="footer" />
             <p className="mt-5 text-sm leading-relaxed text-white/55">
-              {companyInfo.motto}
+              {companyInfo.description}
             </p>
-            <p className="mt-3 text-sm font-semibold text-jaguar-gold-light">
+            <p className="mt-4 text-sm font-semibold text-jaguar-gold-light">
               {companyInfo.tagline}
             </p>
           </div>
@@ -72,11 +72,16 @@ export default function Footer() {
                   className="flex items-start gap-3 text-sm text-white/55 transition-colors hover:text-jaguar-gold-light"
                 >
                   <Phone className="mt-0.5 h-4 w-4 shrink-0 text-jaguar-gold-light" />
-                  <span>
-                    Mobile: {companyInfo.phone}
-                    <br />
-                    Landline: {companyInfo.landline}
-                  </span>
+                  <span>Mobile: {companyInfo.phone}</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  href={`tel:${companyInfo.landline.replace(/\s/g, "")}`}
+                  className="flex items-start gap-3 text-sm text-white/55 transition-colors hover:text-jaguar-gold-light"
+                >
+                  <Phone className="mt-0.5 h-4 w-4 shrink-0 text-jaguar-gold-light" />
+                  <span>Landline: {companyInfo.landline}</span>
                 </a>
               </li>
               <li>
@@ -108,8 +113,16 @@ export default function Footer() {
             ))}
           </div>
           <p className="text-xs text-white/35">
-            &copy; {new Date().getFullYear()} {companyInfo.name}. All rights
-            reserved.
+            &copy; {new Date().getFullYear()}{" "}
+            <a
+              href={companyInfo.website}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white/55 transition-colors hover:text-jaguar-gold-light"
+            >
+              {companyInfo.name}
+            </a>
+            . All rights reserved.
           </p>
         </div>
       </div>

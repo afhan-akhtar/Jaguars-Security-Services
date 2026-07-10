@@ -8,16 +8,16 @@ interface LogoProps {
 const config = {
   header: {
     src: "/images/logo.png",
-    box: "h-14 w-11 sm:h-16 sm:w-12",
-    image: "p-0.5",
-    sizes: "48px",
+    box: "h-20 w-16 sm:h-[5.25rem] sm:w-[4.25rem]",
+    image: "p-1",
+    sizes: "(max-width: 640px) 64px, 72px",
     rounded: "rounded-xl",
   },
   footer: {
     src: "/images/logo.png",
-    box: "h-14 w-11 sm:h-16 sm:w-12",
-    image: "p-0.5",
-    sizes: "48px",
+    box: "h-20 w-16 sm:h-[5.25rem] sm:w-[4.25rem]",
+    image: "p-1",
+    sizes: "(max-width: 640px) 64px, 72px",
     rounded: "rounded-xl",
   },
   card: {
