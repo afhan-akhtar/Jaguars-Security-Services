@@ -25,27 +25,29 @@ export default function CTABlock({
     <section
       className={`relative overflow-hidden ${
         isGold
-          ? "bg-gradient-to-r from-jaguar-gold via-jaguar-gold-bright to-jaguar-gold-light"
-          : "section-slate mesh-gold border-t border-jaguar-black/8"
+          ? "gold-gradient"
+          : "section-premium-dark"
       }`}
     >
       {!isGold && (
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_right,rgba(201,162,39,0.08)_0%,transparent_55%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_left,rgba(201,162,39,0.1)_0%,transparent_60%)]" />
       )}
 
-      <div className="relative mx-auto flex max-w-7xl flex-col items-center gap-12 px-4 py-20 sm:px-6 md:flex-row lg:px-8">
+      <div className="relative mx-auto flex max-w-7xl flex-col items-center gap-12 px-4 py-20 sm:px-6 md:flex-row lg:px-8 lg:py-24">
         <div className="flex-1">
-          {!isGold && <p className="label-tag mb-4">Get Started</p>}
+          {!isGold && (
+            <p className="hero-eyebrow mb-5 before:w-8">Take Action</p>
+          )}
           <h2
-            className={`font-[family-name:var(--font-cormorant)] text-3xl font-semibold leading-tight sm:text-4xl lg:text-[2.75rem] ${
-              isGold ? "text-white" : "text-jaguar-black"
+            className={`font-[family-name:var(--font-cormorant)] text-3xl font-semibold leading-tight sm:text-4xl lg:text-[2.85rem] ${
+              isGold ? "text-jaguar-black" : "text-white"
             }`}
           >
             {title}
           </h2>
           <p
             className={`mt-5 max-w-xl text-base leading-relaxed sm:text-lg ${
-              isGold ? "text-white/85" : "text-jaguar-black/60"
+              isGold ? "text-jaguar-black/75" : "text-white/70"
             }`}
           >
             {description}
@@ -54,8 +56,8 @@ export default function CTABlock({
             href={buttonHref}
             className={`mt-8 inline-flex items-center gap-2 rounded-full px-8 py-3.5 text-xs font-bold tracking-[0.15em] uppercase transition-all duration-300 ${
               isGold
-                ? "bg-jaguar-black text-jaguar-gold-bright hover:bg-jaguar-black/90"
-                : "border border-jaguar-gold-bright text-jaguar-gold-bright hover:bg-jaguar-gold-bright hover:text-white"
+                ? "bg-jaguar-black text-jaguar-gold-light hover:bg-jaguar-black/90 shadow-xl"
+                : "border border-jaguar-gold-light text-jaguar-gold-light hover:bg-jaguar-gold-light hover:text-jaguar-black"
             }`}
           >
             {buttonText}
@@ -64,7 +66,7 @@ export default function CTABlock({
         </div>
 
         {image && (
-          <div className="relative hidden h-60 w-80 shrink-0 overflow-hidden rounded-2xl border border-jaguar-black/10 shadow-xl md:block lg:h-64 lg:w-96">
+          <div className="relative hidden h-64 w-80 shrink-0 overflow-hidden rounded-2xl border border-white/10 shadow-2xl md:block lg:h-72 lg:w-96">
             <Image
               src={image}
               alt=""
@@ -72,13 +74,7 @@ export default function CTABlock({
               className="object-cover"
               sizes="384px"
             />
-            <div
-              className={`absolute inset-0 ${
-                isGold
-                  ? "bg-gradient-to-t from-jaguar-black/20 to-transparent"
-                  : "bg-gradient-to-t from-jaguar-black/30 to-transparent"
-              }`}
-            />
+            <div className="absolute inset-0 bg-gradient-to-t from-jaguar-black/50 to-transparent" />
           </div>
         )}
       </div>

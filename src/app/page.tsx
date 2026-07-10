@@ -200,13 +200,13 @@ export default function HomePage() {
             {whyChooseUs.map((item, i) => (
               <AnimatedSection key={item.title} delay={i * 100}>
                 <div className="elegant-card card-shine p-8 text-center">
-                  <div className="icon-ring mx-auto h-16 w-16">
-                    <item.icon className="h-7 w-7 text-jaguar-gold-bright" />
+                  <div className="icon-ring-solid mx-auto h-16 w-16">
+                    <item.icon className="h-7 w-7 text-jaguar-black" />
                   </div>
-                  <h3 className="mt-6 text-lg font-semibold text-jaguar-black">
+                  <h3 className="mt-6 font-[family-name:var(--font-cormorant)] text-xl font-semibold text-jaguar-black">
                     {item.title}
                   </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-jaguar-black/55">
+                  <p className="mt-3 text-sm leading-relaxed text-body">
                     {item.description}
                   </p>
                 </div>
@@ -230,16 +230,16 @@ export default function HomePage() {
           <div className="mt-16 grid gap-6 md:grid-cols-3">
             {testimonials.map((item, i) => (
               <AnimatedSection key={item.author} delay={i * 120}>
-                <div className="elegant-card flex h-full flex-col border-l-2 border-l-jaguar-gold-bright/40 p-8">
-                  <Quote className="h-7 w-7 text-jaguar-gold-bright/50" />
-                  <p className="mt-5 flex-1 font-[family-name:var(--font-cormorant)] text-lg leading-relaxed text-jaguar-black/75 italic">
+                <div className="elegant-card flex h-full flex-col p-8">
+                  <Quote className="h-8 w-8 text-jaguar-gold-bright/70" />
+                  <p className="mt-5 flex-1 font-[family-name:var(--font-cormorant)] text-xl leading-relaxed text-jaguar-black/85 italic">
                     &ldquo;{item.quote}&rdquo;
                   </p>
                   <div className="mt-8 border-t border-jaguar-black/8 pt-5">
                     <p className="font-semibold text-jaguar-gold-bright">
                       {item.author}
                     </p>
-                    <p className="mt-1 text-xs tracking-wide text-jaguar-black/45">
+                    <p className="mt-1 text-xs font-medium tracking-wide text-muted">
                       {item.location}
                     </p>
                   </div>

@@ -28,9 +28,17 @@ export default function ServicesPage() {
 
       <PillarBar />
 
-      <section className="section-dark py-24">
+      <section className="section-dark section-padding">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <AnimatedSection>
+            <SectionHeading
+              label="SERVICE CATEGORIES"
+              title="Protection for Every Sector"
+              description="From manned guarding to specialist healthcare and education security — we deliver tailored solutions across Greater Manchester."
+              centered
+            />
+          </AnimatedSection>
+          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {serviceCategories.map((category, i) => (
               <AnimatedSection key={category.slug} delay={i * 80}>
                 <ServiceCard category={category} />
@@ -40,7 +48,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="section-charcoal py-24">
+      <section className="section-charcoal section-padding">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <SectionHeading
@@ -51,20 +59,20 @@ export default function ServicesPage() {
             />
           </AnimatedSection>
 
-          <div className="mt-14 grid gap-6 md:grid-cols-2">
+          <div className="mt-16 grid gap-6 md:grid-cols-2">
             {serviceCategories.map((category, i) => (
               <AnimatedSection key={category.slug} delay={i * 80}>
-                <div className="card-dark rounded-2xl p-8">
-                  <h3 className="text-lg font-bold text-jaguar-gold-bright">
+                <div className="elegant-card p-8">
+                  <h3 className="font-[family-name:var(--font-cormorant)] text-xl font-semibold text-jaguar-gold-bright">
                     {category.title}
                   </h3>
-                  <ul className="mt-5 grid gap-2.5 sm:grid-cols-2">
+                  <ul className="mt-5 grid gap-3 sm:grid-cols-2">
                     {category.services.map((service) => (
                       <li
                         key={service}
-                        className="flex items-start gap-2 text-sm text-jaguar-black/70"
+                        className="flex items-start gap-2.5 text-sm text-body"
                       >
-                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-jaguar-gold-bright" />
+                        <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-jaguar-gold-bright" />
                         {service}
                       </li>
                     ))}
@@ -84,7 +92,7 @@ export default function ServicesPage() {
       </section>
 
       <CTABlock
-        variant="gold"
+        variant="dark"
         title="Not Sure Which Service You Need?"
         description="Contact our team and we'll help you find the right security solution for your premises."
         buttonText="Get in Touch"

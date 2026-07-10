@@ -2,15 +2,16 @@
 
 :root {
   --jaguar-black: #1a1a1a;
-  --jaguar-charcoal: #f5f3ef;
-  --jaguar-slate: #ece8e0;
-  --jaguar-dark: #e0dbd2;
+  --jaguar-ink: #0c0c0c;
+  --jaguar-charcoal: #f7f5f1;
+  --jaguar-slate: #efede8;
+  --jaguar-dark: #e4e0d8;
   --jaguar-gold: #b8941f;
   --jaguar-gold-bright: #c9a227;
   --jaguar-gold-light: #e8b923;
   --jaguar-cream: #faf8f4;
   --jaguar-white: #ffffff;
-  --background: #fafaf8;
+  --background: #ffffff;
   --foreground: #1a1a1a;
 }
 
@@ -181,6 +182,19 @@ body {
   color: var(--foreground);
 }
 
+.section-premium-dark {
+  background: var(--jaguar-ink);
+  color: var(--jaguar-white);
+}
+
+.text-body {
+  color: rgba(26, 26, 26, 0.78);
+}
+
+.text-muted {
+  color: rgba(26, 26, 26, 0.58);
+}
+
 .section-padding {
   padding-top: 6rem;
   padding-bottom: 6rem;
@@ -221,15 +235,16 @@ body {
   position: relative;
   overflow: hidden;
   border-radius: 1rem;
-  background: linear-gradient(160deg, #ffffff 0%, #f9f7f3 100%);
-  border: 1px solid rgba(26, 26, 26, 0.08);
+  background: #ffffff;
+  border: 1px solid rgba(26, 26, 26, 0.07);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .elegant-card:hover {
-  border-color: rgba(201, 162, 39, 0.35);
-  transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  border-color: rgba(201, 162, 39, 0.4);
+  transform: translateY(-8px);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.12);
 }
 
 .elegant-card::after {
@@ -253,8 +268,17 @@ body {
   align-items: center;
   justify-content: center;
   border-radius: 9999px;
-  border: 1px solid rgba(201, 162, 39, 0.35);
-  background: rgba(201, 162, 39, 0.1);
+  border: 1px solid rgba(201, 162, 39, 0.4);
+  background: rgba(201, 162, 39, 0.12);
+}
+
+.icon-ring-solid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #c9a227, #e8b923);
+  box-shadow: 0 8px 24px rgba(201, 162, 39, 0.3);
 }
 
 .card-shine {
@@ -278,16 +302,35 @@ body {
 }
 
 .label-tag {
-  display: inline-block;
-  padding: 0.35rem 1rem;
-  font-size: 0.65rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.4rem 0;
+  font-size: 0.68rem;
   font-weight: 700;
-  letter-spacing: 0.3em;
+  letter-spacing: 0.32em;
   text-transform: uppercase;
   color: #8a6d12;
-  border: 1px solid rgba(138, 109, 18, 0.35);
-  border-radius: 9999px;
-  background: rgba(255, 255, 255, 0.95);
+}
+
+.label-tag::before {
+  content: "";
+  width: 2rem;
+  height: 2px;
+  background: linear-gradient(90deg, #c9a227, transparent);
+  flex-shrink: 0;
+}
+
+.label-tag-centered::before {
+  display: none;
+}
+
+.label-tag-centered::after {
+  content: "";
+  width: 2rem;
+  height: 2px;
+  background: linear-gradient(270deg, #c9a227, transparent);
+  flex-shrink: 0;
 }
 
 @keyframes fade-up {

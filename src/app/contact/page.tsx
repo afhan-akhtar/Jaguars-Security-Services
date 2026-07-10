@@ -5,6 +5,7 @@ import AnimatedSection from "@/components/AnimatedSection";
 import ContactForm from "@/components/ContactForm";
 import PageHero from "@/components/PageHero";
 import PillarBar from "@/components/PillarBar";
+import SectionHeading from "@/components/SectionHeading";
 
 export const metadata: Metadata = {
   title: "Contact Us",
@@ -18,7 +19,7 @@ const contactItems = [
     content: (
       <>
         <p>Mobile: {companyInfo.phone}</p>
-        <p className="mt-1 text-jaguar-black/50">
+        <p className="mt-1 text-muted">
           Landline: {companyInfo.landline}
         </p>
       </>
@@ -48,7 +49,7 @@ const contactItems = [
     content: (
       <>
         <p>24/7 Emergency Response</p>
-        <p className="mt-1 text-jaguar-black/50">
+        <p className="mt-1 text-muted">
           Office enquiries: Mon – Fri, 9am – 5pm
         </p>
       </>
@@ -69,18 +70,16 @@ export default function ContactPage() {
 
       <PillarBar />
 
-      <section className="section-dark mesh-gold py-24">
+      <section className="section-dark section-padding">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-16 lg:grid-cols-5">
             <div className="lg:col-span-2">
               <AnimatedSection>
-                <h2 className="font-[family-name:var(--font-cormorant)] text-3xl font-bold text-jaguar-black">
-                  Contact Details
-                </h2>
-                <p className="mt-3 text-jaguar-black/65">
-                  We&apos;re here to help with all your security and facilities
-                  needs.
-                </p>
+                <SectionHeading
+                  label="REACH US"
+                  title="Contact Details"
+                  description="We're here to help with all your security and facilities needs."
+                />
               </AnimatedSection>
 
               <div className="mt-10 space-y-5">
@@ -90,10 +89,10 @@ export default function ContactPage() {
                     <AnimatedSection key={item.label} delay={i * 100}>
                       <Wrapper
                         {...(item.href ? { href: item.href } : {})}
-                        className="card-dark flex items-start gap-4 rounded-xl p-5"
+                        className="elegant-card flex items-start gap-4 p-5 transition-colors hover:border-jaguar-gold-bright/40"
                       >
-                        <div className="icon-ring h-12 w-12 shrink-0">
-                          <item.icon className="h-5 w-5 text-jaguar-gold-bright" />
+                        <div className="icon-ring-solid h-12 w-12 shrink-0">
+                          <item.icon className="h-5 w-5 text-jaguar-black" />
                         </div>
                         <div>
                           <p className="text-xs font-bold tracking-[0.2em] text-jaguar-gold-bright">
@@ -111,14 +110,12 @@ export default function ContactPage() {
             </div>
 
             <AnimatedSection delay={200} className="lg:col-span-3">
-              <div className="rounded-2xl glass-card p-8 sm:p-10">
-                <h2 className="font-[family-name:var(--font-cormorant)] text-3xl font-bold text-jaguar-black">
-                  Send Us an Enquiry
-                </h2>
-                <p className="mt-2 text-sm text-jaguar-black/50">
-                  Fill in the form and we&apos;ll get back to you as soon as
-                  possible.
-                </p>
+              <div className="elegant-card p-8 sm:p-10">
+                <SectionHeading
+                  label="ENQUIRY FORM"
+                  title="Send Us a Message"
+                  description="Fill in the form and we'll get back to you as soon as possible."
+                />
                 <div className="mt-8">
                   <ContactForm />
                 </div>

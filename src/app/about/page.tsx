@@ -54,7 +54,7 @@ export default function AboutPage() {
 
       <PillarBar />
 
-      <section className="section-dark py-24">
+      <section className="section-dark section-padding">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
             <AnimatedSection>
@@ -62,7 +62,7 @@ export default function AboutPage() {
                 label="WHO WE ARE"
                 title="Your One-Stop Security Partner"
               />
-              <p className="mt-6 leading-relaxed text-jaguar-black/75">
+              <p className="mt-6 leading-relaxed text-body">
                 {companyInfo.description}
               </p>
               <Link
@@ -75,7 +75,7 @@ export default function AboutPage() {
             </AnimatedSection>
 
             <AnimatedSection delay={150}>
-              <div className="card-dark overflow-hidden rounded-2xl">
+              <div className="elegant-card overflow-hidden">
                 <div className="relative h-64">
                   <Image
                     src="/images/business-card.png"
@@ -86,17 +86,15 @@ export default function AboutPage() {
                   />
                 </div>
                 <div className="border-t border-jaguar-black/8 p-8">
-                  <p className="text-sm font-bold tracking-[0.3em] text-jaguar-gold-bright">
-                    OUR COMMITMENT
-                  </p>
-                  <p className="mt-3 font-[family-name:var(--font-cormorant)] text-2xl font-bold text-jaguar-black">
+                  <p className="label-tag">OUR COMMITMENT</p>
+                  <p className="mt-4 font-[family-name:var(--font-cormorant)] text-2xl font-semibold text-jaguar-black">
                     {companyInfo.motto}
                   </p>
                   <div className="mt-6 flex flex-wrap gap-3">
                     {companyInfo.pillars.map((pillar) => (
                       <span
                         key={pillar}
-                        className="rounded-full border border-jaguar-gold-bright/50 px-5 py-2 text-xs font-bold tracking-widest text-jaguar-gold-bright"
+                        className="rounded-full border border-jaguar-gold-bright/40 bg-jaguar-gold-bright/8 px-5 py-2 text-xs font-bold tracking-widest text-jaguar-gold uppercase"
                       >
                         {pillar}
                       </span>
@@ -109,7 +107,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="section-charcoal py-24">
+      <section className="section-charcoal section-padding">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <AnimatedSection>
             <SectionHeading
@@ -119,15 +117,17 @@ export default function AboutPage() {
             />
           </AnimatedSection>
 
-          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {values.map((value, i) => (
               <AnimatedSection key={value.title} delay={i * 100}>
                 <div className="elegant-card card-shine p-8 text-center">
-                  <div className="icon-ring mx-auto h-14 w-14">
-                    <value.icon className="h-6 w-6 text-jaguar-gold-bright" />
+                  <div className="icon-ring-solid mx-auto h-14 w-14">
+                    <value.icon className="h-6 w-6 text-jaguar-black" />
                   </div>
-                  <h3 className="mt-5 font-bold text-jaguar-black">{value.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-jaguar-black/65">
+                  <h3 className="mt-5 font-[family-name:var(--font-cormorant)] text-lg font-semibold text-jaguar-black">
+                    {value.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-body">
                     {value.description}
                   </p>
                 </div>

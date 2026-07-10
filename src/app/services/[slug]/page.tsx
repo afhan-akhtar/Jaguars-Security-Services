@@ -7,6 +7,7 @@ import { serviceCategories } from "@/lib/services";
 import AnimatedSection from "@/components/AnimatedSection";
 import CTABlock from "@/components/CTABlock";
 import PageHero from "@/components/PageHero";
+import SectionHeading from "@/components/SectionHeading";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -53,26 +54,24 @@ export default async function ServiceDetailPage({ params }: PageProps) {
         </Link>
       </PageHero>
 
-      <section className="section-dark py-24">
+      <section className="section-dark section-padding">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-3">
             <div className="lg:col-span-2">
               <AnimatedSection>
-                <h2 className="font-[family-name:var(--font-cormorant)] text-3xl font-bold text-jaguar-black">
-                  Services We Provide
-                </h2>
-                <p className="mt-3 text-jaguar-black/65">
-                  Comprehensive {category.title.toLowerCase()} tailored to
-                  your site requirements.
-                </p>
+                <SectionHeading
+                  label="WHAT WE DELIVER"
+                  title="Services We Provide"
+                  description={`Comprehensive ${category.title.toLowerCase()} tailored to your site requirements.`}
+                />
               </AnimatedSection>
 
-              <div className="mt-10 grid gap-4 sm:grid-cols-2">
+              <div className="mt-12 grid gap-4 sm:grid-cols-2">
                 {category.services.map((service, i) => (
                   <AnimatedSection key={service} delay={i * 50}>
                     <div className="elegant-card flex items-start gap-3 p-5">
                       <CheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-jaguar-gold-bright" />
-                      <span className="text-sm font-medium text-jaguar-black/85">
+                      <span className="text-sm font-medium text-jaguar-black">
                         {service}
                       </span>
                     </div>
@@ -83,7 +82,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
 
             <AnimatedSection delay={200}>
               <div className="elegant-card sticky top-28 overflow-hidden">
-                <div className="relative h-48">
+                <div className="relative h-52">
                   <Image
                     src={category.image}
                     alt={category.title}
@@ -91,18 +90,19 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                     className="object-cover"
                     sizes="400px"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-jaguar-black/60 to-transparent" />
                 </div>
                 <div className="p-8">
-                  <h3 className="font-[family-name:var(--font-cormorant)] text-2xl font-bold text-jaguar-gold-bright">
+                  <h3 className="font-[family-name:var(--font-cormorant)] text-2xl font-semibold text-jaguar-black">
                     Request This Service
                   </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-jaguar-black/65">
+                  <p className="mt-3 text-sm leading-relaxed text-body">
                     Contact us today for a free consultation and tailored quote
                     for your {category.title.toLowerCase()} requirements.
                   </p>
                   <Link
                     href="/contact"
-                    className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-jaguar-gold-bright px-6 py-3.5 text-sm font-bold text-white transition-all hover:bg-jaguar-gold-light gold-glow"
+                    className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-jaguar-gold-bright px-6 py-3.5 text-sm font-bold text-jaguar-black transition-all hover:bg-jaguar-gold-light gold-glow"
                   >
                     Get a Quote
                     <ArrowRight className="h-4 w-4" />
@@ -116,13 +116,13 @@ export default async function ServiceDetailPage({ params }: PageProps) {
 
       <section className="section-charcoal py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-xl font-bold text-jaguar-black">Other Services</h2>
-          <div className="mt-6 flex flex-wrap gap-3">
+          <SectionHeading label="EXPLORE MORE" title="Other Services" />
+          <div className="mt-8 flex flex-wrap gap-3">
             {otherServices.map((service) => (
               <Link
                 key={service.slug}
                 href={`/services/${service.slug}`}
-                className="rounded-full border border-jaguar-black/12 bg-white px-5 py-2 text-sm font-medium text-jaguar-black/70 transition-all hover:border-jaguar-gold-bright hover:text-jaguar-gold-bright"
+                className="rounded-full border border-jaguar-black/10 bg-white px-5 py-2.5 text-sm font-medium text-body transition-all hover:border-jaguar-gold-bright hover:text-jaguar-gold-bright"
               >
                 {service.title}
               </Link>

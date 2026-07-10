@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import { Menu, Phone, X } from "lucide-react";
 import Logo from "./Logo";
 import { companyInfo } from "@/lib/services";
@@ -14,20 +14,34 @@ const navLinks = [
   { href: "/contact", label: "Contact" },
 ];
 
+function subscribeToScroll(callback: () => void) {
+  window.addEventListener("scroll", callback, { passive: true });
+  return () => window.removeEventListener("scroll", callback);
+}
+
+function getScrollSnapshot() {
+  return window.scrollY > 20;
+}
+
+function getServerScrollSnapshot() {
+  return false;
+}
+
+function useScrolled() {
+  return useSyncExternalStore(
+    subscribeToScroll,
+    getScrollSnapshot,
+    getServerScrollSnapshot
+  );
+}
+
 export default function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const scrolled = useScrolled();
 
   const isHome = pathname === "/";
   const overHero = isHome && !scrolled;
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
 
   useEffect(() => {
     setOpen(false);
@@ -41,6 +55,12 @@ export default function Header() {
     ? "border-white/35 text-white hover:border-jaguar-gold-light hover:bg-white/10"
     : "border-jaguar-gold/40 text-jaguar-gold hover:border-jaguar-gold-bright hover:bg-jaguar-gold-bright/10";
 
+  const shellClass = scrolled
+    ? "border-b border-jaguar-black/8 bg-white/95 py-3 shadow-lg shadow-black/8 backdrop-blur-xl"
+    : overHero
+      ? "border-b border-white/10 bg-black/20 py-5 backdrop-blur-md"
+      : "border-b border-transparent bg-white/85 py-4 backdrop-blur-md";
+
   return (
     <header className="fixed top-0 z-50 w-full">
       <div
@@ -48,15 +68,7 @@ export default function Header() {
           overHero ? "h-0.5 opacity-80" : "h-px opacity-100"
         }`}
       />
-      <div
-        className={`transition-all duration-500 ${
-          scrolled
-            ? "border-b border-jaguar-black/8 bg-white/95 py-3 shadow-lg shadow-black/8 backdrop-blur-xl"
-            : overHero
-              ? "border-b border-white/10 bg-black/20 py-5 backdrop-blur-md"
-              : "border-b border-transparent bg-white/85 py-4 backdrop-blur-md"
-        }`}
-      >
+      <div className={`transition-all duration-500 ${shellClass}`}>
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <Link href="/" aria-label="Jaguar Security Services home">
             <Logo />
