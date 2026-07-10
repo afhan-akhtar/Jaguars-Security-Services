@@ -6,6 +6,7 @@ interface ContactBody {
   phone?: string;
   service?: string;
   message: string;
+  botcheck?: boolean;
 }
 
 function isValidEmail(email: string): boolean {
@@ -14,7 +15,20 @@ function isValidEmail(email: string): boolean {
 
 export async function POST(request: Request) {
   try {
+    const accessKey = process.env.WEB3FORMS_ACCESS_KEY;
+    if (!accessKey) {
+      console.error("WEB3FORMS_ACCESS_KEY is not configured");
+      return NextResponse.json(
+        { error: "Contact form is not configured. Please try again later." },
+        { status: 500 }
+      );
+    }
+
     const body: ContactBody = await request.json();
+
+    if (body.botcheck) {
+      return NextResponse.json({ success: true });
+    }
 
     if (!body.name?.trim() || !body.email?.trim() || !body.message?.trim()) {
       return NextResponse.json(
@@ -30,72 +44,32 @@ export async function POST(request: Request) {
       );
     }
 
-    const contactEmail =
-      process.env.CONTACT_EMAIL || "info@jaguarsecurityservices.co.uk";
+    const res = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        access_key: accessKey,
+        name: body.name.trim(),
+        email: body.email.trim(),
+        phone: body.phone?.trim() || "Not provided",
+        service: body.service?.trim() || "Not specified",
+        message: body.message.trim(),
+        subject: `New Enquiry from ${body.name.trim()} - Jaguar Security Services`,
+        from_name: "Jaguar Security Services Website",
+      }),
+    });
 
-    const emailContent = `
-New enquiry from Jaguar Security Services website
+    const result = await res.json();
 
-Name: ${body.name}
-Email: ${body.email}
-Phone: ${body.phone || "Not provided"}
-Service: ${body.service || "Not specified"}
-
-Message:
-${body.message}
-    `.trim();
-
-    if (process.env.RESEND_API_KEY) {
-      const res = await fetch("https://api.resend.com/emails", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          from: process.env.RESEND_FROM || "onboarding@resend.dev",
-          to: contactEmail,
-          reply_to: body.email,
-          subject: `New Enquiry from ${body.name} - Jaguar Security Services`,
-          text: emailContent,
-        }),
-      });
-
-      if (!res.ok) {
-        const error = await res.text();
-        console.error("Resend API error:", error);
-        return NextResponse.json(
-          { error: "Failed to send message. Please try again later." },
-          { status: 500 }
-        );
-      }
-    } else if (
-      process.env.SMTP_HOST &&
-      process.env.SMTP_USER &&
-      process.env.SMTP_PASS
-    ) {
-      const nodemailer = await import("nodemailer");
-      const transporter = nodemailer.default.createTransport({
-        host: process.env.SMTP_HOST,
-        port: Number(process.env.SMTP_PORT || 587),
-        secure: process.env.SMTP_SECURE === "true",
-        auth: {
-          user: process.env.SMTP_USER,
-          pass: process.env.SMTP_PASS,
-        },
-      });
-
-      await transporter.sendMail({
-        from: process.env.SMTP_FROM || process.env.SMTP_USER,
-        to: contactEmail,
-        replyTo: body.email,
-        subject: `New Enquiry from ${body.name} - Jaguar Security Services`,
-        text: emailContent,
-      });
-    } else {
-      console.log("=== CONTACT FORM SUBMISSION (no email provider configured) ===");
-      console.log(emailContent);
-      console.log("==============================================================");
+    if (!result.success) {
+      console.error("Web3Forms error:", result);
+      return NextResponse.json(
+        { error: result.message || "Failed to send message. Please try again later." },
+        { status: 500 }
+      );
     }
 
     return NextResponse.json({ success: true });

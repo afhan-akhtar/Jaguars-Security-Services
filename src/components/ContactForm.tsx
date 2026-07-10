@@ -24,6 +24,7 @@ export default function ContactForm() {
       phone: formData.get("phone") as string,
       service: formData.get("service") as string,
       message: formData.get("message") as string,
+      botcheck: formData.get("botcheck") === "on",
     };
 
     try {
@@ -75,6 +76,15 @@ export default function ContactForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
+      <input
+        type="checkbox"
+        name="botcheck"
+        tabIndex={-1}
+        autoComplete="off"
+        className="hidden"
+        style={{ display: "none" }}
+      />
+
       <div className="grid gap-6 sm:grid-cols-2">
         <div>
           <label
