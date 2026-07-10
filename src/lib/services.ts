@@ -215,6 +215,7 @@ export const heroImage = "/images/services/hero.jpg";
 
 export const pageImages = {
   about: "/images/services/about.jpg",
+  aboutTeam: "/images/services/guarding.jpg",
   contact: "/images/services/contact.jpg",
   services: "/images/services/security.jpg",
   ctaQuote: "/images/services/office.jpg",

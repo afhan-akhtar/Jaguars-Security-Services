@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import { companyInfo, pageImages } from "@/lib/services";
 import AnimatedSection from "@/components/AnimatedSection";
+import BusinessCard from "@/components/BusinessCard";
 import ContactForm from "@/components/ContactForm";
 import PageHero from "@/components/PageHero";
 import PillarBar from "@/components/PillarBar";
@@ -72,8 +73,8 @@ export default function ContactPage() {
 
       <section className="section-dark section-padding">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-16 lg:grid-cols-5">
-            <div className="lg:col-span-2">
+          <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+            <div className="space-y-10">
               <AnimatedSection>
                 <SectionHeading
                   label="REACH US"
@@ -82,7 +83,7 @@ export default function ContactPage() {
                 />
               </AnimatedSection>
 
-              <div className="mt-10 space-y-5">
+              <div className="space-y-5">
                 {contactItems.map((item, i) => {
                   const Wrapper = item.href ? "a" : "div";
                   return (
@@ -107,10 +108,14 @@ export default function ContactPage() {
                   );
                 })}
               </div>
+
+              <AnimatedSection delay={200}>
+                <BusinessCard />
+              </AnimatedSection>
             </div>
 
-            <AnimatedSection delay={200} className="lg:col-span-3">
-              <div className="elegant-card p-8 sm:p-10">
+            <AnimatedSection delay={150}>
+              <div className="elegant-card p-8 sm:p-10 lg:sticky lg:top-28">
                 <SectionHeading
                   label="ENQUIRY FORM"
                   title="Send Us a Message"

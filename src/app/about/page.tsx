@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Award, Shield, Target, Users } from "lucide-react";
 import { companyInfo, pageImages } from "@/lib/services";
 import AnimatedSection from "@/components/AnimatedSection";
+import BusinessCard from "@/components/BusinessCard";
 import CTABlock from "@/components/CTABlock";
 import PageHero from "@/components/PageHero";
 import PillarBar from "@/components/PillarBar";
@@ -56,7 +56,7 @@ export default function AboutPage() {
 
       <section className="section-dark section-padding">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-16 lg:grid-cols-2 lg:items-center">
+          <div className="grid gap-12 lg:grid-cols-2 lg:items-start lg:gap-16">
             <AnimatedSection>
               <SectionHeading
                 label="WHO WE ARE"
@@ -75,33 +75,7 @@ export default function AboutPage() {
             </AnimatedSection>
 
             <AnimatedSection delay={150}>
-              <div className="elegant-card overflow-hidden">
-                <div className="relative h-64">
-                  <Image
-                    src="/images/business-card.png"
-                    alt="Jaguar Security Services business card"
-                    fill
-                    className="object-cover object-top"
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                  />
-                </div>
-                <div className="border-t border-jaguar-black/8 p-8">
-                  <p className="label-tag">OUR COMMITMENT</p>
-                  <p className="mt-4 font-[family-name:var(--font-cormorant)] text-2xl font-semibold text-jaguar-black">
-                    {companyInfo.motto}
-                  </p>
-                  <div className="mt-6 flex flex-wrap gap-3">
-                    {companyInfo.pillars.map((pillar) => (
-                      <span
-                        key={pillar}
-                        className="rounded-full border border-jaguar-gold-bright/40 bg-jaguar-gold-bright/8 px-5 py-2 text-xs font-bold tracking-widest text-jaguar-gold uppercase"
-                      >
-                        {pillar}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
+              <BusinessCard />
             </AnimatedSection>
           </div>
         </div>
