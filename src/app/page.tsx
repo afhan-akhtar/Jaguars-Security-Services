@@ -20,6 +20,7 @@ import AnimatedSection from "@/components/AnimatedSection";
 import CTABlock from "@/components/CTABlock";
 import FeaturedServiceCard from "@/components/FeaturedServiceCard";
 import GoldButton from "@/components/GoldButton";
+import Logo from "@/components/Logo";
 import PillarBar from "@/components/PillarBar";
 import SectionHeading from "@/components/SectionHeading";
 import ServiceCard from "@/components/ServiceCard";
@@ -108,14 +109,8 @@ export default function HomePage() {
             </div>
 
             <div className="animate-scale-in hidden justify-center lg:flex">
-              <div className="hero-logo-glow animate-float relative h-80 w-80">
-                <Image
-                  src="/images/logo.png"
-                  alt="Jaguar Security Services"
-                  fill
-                  className="object-contain drop-shadow-2xl"
-                  sizes="320px"
-                />
+              <div className="hero-logo-showcase animate-float">
+                <Logo size="hero" />
               </div>
             </div>
           </div>

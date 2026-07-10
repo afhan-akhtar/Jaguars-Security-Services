@@ -157,6 +157,45 @@ body {
   );
 }
 
+.logo-frame {
+  overflow: hidden;
+  border: 2px solid rgba(232, 185, 35, 0.45);
+  background: #000;
+  box-shadow:
+    0 8px 28px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(232, 185, 35, 0.18);
+}
+
+.logo-frame-hero {
+  border-width: 2px;
+  border-color: rgba(232, 185, 35, 0.55);
+  box-shadow:
+    0 0 80px rgba(232, 185, 35, 0.18),
+    0 28px 56px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(232, 185, 35, 0.2);
+}
+
+.hero-logo-showcase {
+  position: relative;
+  padding: 6px;
+  border-radius: 2.75rem;
+  background: linear-gradient(
+    145deg,
+    rgba(232, 185, 35, 0.35) 0%,
+    rgba(232, 185, 35, 0.08) 45%,
+    rgba(232, 185, 35, 0.25) 100%
+  );
+}
+
+.hero-logo-showcase::before {
+  content: "";
+  position: absolute;
+  inset: -20px;
+  border-radius: 3rem;
+  background: radial-gradient(circle, rgba(232, 185, 35, 0.22) 0%, transparent 68%);
+  pointer-events: none;
+}
+
 .gold-glow {
   box-shadow: 0 0 40px rgba(201, 162, 39, 0.2);
 }

@@ -1,6 +1,6 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Globe, Mail, MapPin, Phone } from "lucide-react";
+import Logo from "@/components/Logo";
 import { companyInfo } from "@/lib/services";
 
 const contactItems = [
@@ -38,15 +38,7 @@ export default function BusinessCard() {
         {/* Logo panel — large, no duplicate text */}
         <div className="relative flex min-h-[220px] items-center justify-center bg-jaguar-ink p-8 sm:w-[42%] sm:min-h-[360px]">
           <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(232,185,35,0.12)_0%,transparent_65%)]" />
-          <div className="relative h-44 w-44 sm:h-52 sm:w-52">
-            <Image
-              src="/images/logo.png"
-              alt="Jaguar Security Services Ltd"
-              fill
-              className="object-contain"
-              sizes="(max-width: 640px) 176px, 208px"
-            />
-          </div>
+          <Logo size="card" />
         </div>
 
         {/* Contact panel */}
