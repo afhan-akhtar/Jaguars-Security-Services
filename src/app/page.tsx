@@ -141,7 +141,7 @@ export default function HomePage() {
                   title={service.title}
                   description={service.description}
                   image={service.image}
-                  href={service.href}
+                  href={`/services/${service.slug}`}
                 />
               </AnimatedSection>
             ))}
