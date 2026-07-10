@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+:root {
+  --jaguar-black: #0a0a0a;
+  --jaguar-charcoal: #141414;
+  --jaguar-dark: #1c1c1c;
+  --jaguar-gold: #d4a017;
+  --jaguar-gold-bright: #ffd200;
+  --jaguar-gold-light: #f5c842;
+  --jaguar-cream: #f5f3ef;
+  --jaguar-white: #ffffff;
+  --background: var(--jaguar-black);
+  --foreground: var(--jaguar-white);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-jaguar-black: var(--jaguar-black);
+  --color-jaguar-charcoal: var(--jaguar-charcoal);
+  --color-jaguar-dark: var(--jaguar-dark);
+  --color-jaguar-gold: var(--jaguar-gold);
+  --color-jaguar-gold-bright: var(--jaguar-gold-bright);
+  --color-jaguar-gold-light: var(--jaguar-gold-light);
+  --color-jaguar-cream: var(--jaguar-cream);
+  --font-sans: var(--font-montserrat);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--jaguar-black);
+  color: var(--jaguar-white);
+  font-family: var(--font-montserrat), system-ui, sans-serif;
+}
+
+::selection {
+  background: var(--jaguar-gold);
+  color: var(--jaguar-black);
+}
+
+.gold-gradient {
+  background: linear-gradient(135deg, #d4a017 0%, #ffd200 50%, #f5c842 100%);
+}
+
+.slant-divider {
+  clip-path: polygon(0 0, 100% 0, 92% 100%, 0% 100%);
+}
+
+.slant-divider-reverse {
+  clip-path: polygon(8% 0, 100% 0, 100% 100%, 0% 100%);
+}
+
+.text-gradient-gold {
+  background: linear-gradient(135deg, #d4a017, #ffd200);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.7s ease-out forwards;
+}
+
+.animate-fade-up-delay-1 {
+  animation: fade-up 0.7s ease-out 0.15s forwards;
+  opacity: 0;
+}
+
+.animate-fade-up-delay-2 {
+  animation: fade-up 0.7s ease-out 0.3s forwards;
+  opacity: 0;
+}
