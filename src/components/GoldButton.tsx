@@ -5,7 +5,7 @@ import type { ReactNode } from "react";
 interface GoldButtonProps {
   href: string;
   children: ReactNode;
-  variant?: "primary" | "outline" | "dark" | "light";
+  variant?: "primary" | "outline" | "dark" | "light" | "hero";
   className?: string;
 }
 
@@ -17,12 +17,13 @@ export default function GoldButton({
 }: GoldButtonProps) {
   const styles = {
     primary:
-      "bg-jaguar-gold-bright text-jaguar-black hover:bg-jaguar-gold-light shadow-lg shadow-jaguar-gold-bright/20",
+      "bg-jaguar-gold-bright text-jaguar-black hover:bg-jaguar-gold-light shadow-lg shadow-black/20",
     outline:
-      "border border-white/25 text-white hover:border-jaguar-gold-bright hover:text-jaguar-gold-bright bg-transparent",
-    dark: "bg-jaguar-charcoal text-jaguar-gold-bright border border-jaguar-gold/20 hover:border-jaguar-gold-bright",
+      "border-2 border-jaguar-black/25 text-jaguar-black bg-white hover:border-jaguar-gold-bright hover:text-jaguar-gold-bright shadow-sm",
+    dark: "bg-jaguar-black text-white border border-jaguar-black hover:bg-jaguar-black/90",
     light:
-      "border border-white/50 text-white hover:bg-white hover:text-jaguar-black",
+      "border border-jaguar-gold/40 text-jaguar-gold hover:bg-jaguar-gold-bright hover:text-white",
+    hero: "border border-white/40 text-white bg-white/5 backdrop-blur-sm hover:border-jaguar-gold-light hover:bg-jaguar-gold-bright/15 hover:text-jaguar-gold-light",
   };
 
   return (

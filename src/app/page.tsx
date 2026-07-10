@@ -56,72 +56,72 @@ export default function HomePage() {
   return (
     <>
       {/* Hero */}
-      <section className="section-dark mesh-gold relative min-h-[92vh] overflow-hidden">
+      <section className="relative min-h-[95vh] overflow-hidden">
         <Image
           src={heroImage}
           alt="Professional security services"
           fill
           priority
-          className="object-cover opacity-35"
+          className="object-cover scale-105"
           sizes="100vw"
         />
-        <div className="hero-overlay absolute inset-0" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_80%_20%,rgba(232,185,35,0.08)_0%,transparent_50%)]" />
+        <div className="hero-premium-overlay absolute inset-0" />
+        <div className="hero-premium-glow absolute inset-0" />
 
-        <div className="relative mx-auto flex min-h-[92vh] max-w-7xl flex-col justify-center px-4 py-28 sm:px-6 lg:px-8">
-          <div className="grid items-center gap-16 lg:grid-cols-[1.1fr_0.9fr]">
-            <div className="max-w-2xl">
-              <p className="label-tag animate-fade-up">{companyInfo.motto}</p>
-              <h1 className="animate-fade-up-delay-1 mt-6 font-[family-name:var(--font-cormorant)] text-5xl font-semibold leading-[1.06] text-white sm:text-6xl lg:text-[4.25rem]">
-                Shaping Your{" "}
-                <span className="text-gradient-gold">Security</span> in Greater
-                Manchester
-              </h1>
-              <p className="animate-fade-up-delay-2 mt-6 text-lg leading-relaxed text-white/65">
-                Professional manned guarding, facilities support and cleaning —
-                delivered by a trusted local team with 24/7 coverage.
-              </p>
-              <div className="animate-fade-up-delay-3 mt-10 flex flex-wrap gap-4">
-                <GoldButton href="/contact" variant="primary">
-                  Get a Free Quote
-                </GoldButton>
-                <GoldButton href="/services" variant="outline">
-                  View All Services
-                </GoldButton>
-              </div>
-              <div className="animate-fade-up-delay-3 mt-10 flex flex-wrap gap-x-8 gap-y-3 border-t border-white/10 pt-8">
-                {["SIA Licensed", "24/7 Response", "Greater Manchester"].map(
-                  (badge) => (
-                    <span
-                      key={badge}
-                      className="flex items-center gap-2 text-xs font-semibold tracking-widest text-white/50 uppercase"
-                    >
-                      <span className="h-1 w-1 rounded-full bg-jaguar-gold-bright" />
-                      {badge}
-                    </span>
-                  )
-                )}
+        <div className="relative mx-auto flex min-h-[95vh] max-w-7xl items-center px-4 py-32 sm:px-6 lg:px-8">
+          <div className="grid w-full items-center gap-12 lg:grid-cols-[1fr_auto] lg:gap-20">
+            <div className="flex gap-6 sm:gap-8">
+              <div className="hero-accent-line hidden sm:block" />
+              <div className="max-w-2xl">
+                <p className="hero-eyebrow animate-fade-up">
+                  {companyInfo.motto}
+                </p>
+                <h1 className="animate-fade-up-delay-1 mt-7 font-[family-name:var(--font-cormorant)] text-5xl font-semibold leading-[1.05] text-white sm:text-6xl lg:text-[4.5rem]">
+                  Shaping Your{" "}
+                  <span className="text-gradient-gold">Security</span>
+                  <br />
+                  in Greater Manchester
+                </h1>
+                <p className="animate-fade-up-delay-2 mt-7 max-w-xl text-lg leading-relaxed text-white/75">
+                  Professional manned guarding, facilities support and cleaning
+                  — delivered by a trusted local team with 24/7 coverage.
+                </p>
+                <div className="animate-fade-up-delay-3 mt-10 flex flex-wrap gap-4">
+                  <GoldButton href="/contact" variant="primary">
+                    Get a Free Quote
+                  </GoldButton>
+                  <GoldButton href="/services" variant="hero">
+                    View All Services
+                  </GoldButton>
+                </div>
+                <div className="animate-fade-up-delay-3 mt-12 flex flex-wrap gap-x-8 gap-y-4 border-t border-white/15 pt-8">
+                  {["SIA Licensed", "24/7 Response", "Greater Manchester"].map(
+                    (badge) => (
+                      <span key={badge} className="hero-trust-badge">
+                        <span className="h-1.5 w-1.5 rounded-full bg-jaguar-gold-light" />
+                        {badge}
+                      </span>
+                    )
+                  )}
+                </div>
               </div>
             </div>
 
-            <div className="animate-scale-in hidden justify-end lg:flex">
-              <div className="relative">
-                <div className="absolute -inset-8 rounded-full bg-jaguar-gold-bright/5 blur-3xl" />
-                <div className="animate-float relative h-72 w-72">
-                  <Image
-                    src="/images/logo.png"
-                    alt="Jaguar Security Services"
-                    fill
-                    className="object-contain drop-shadow-2xl"
-                    sizes="288px"
-                  />
-                </div>
+            <div className="animate-scale-in hidden justify-center lg:flex">
+              <div className="hero-logo-glow animate-float relative h-80 w-80">
+                <Image
+                  src="/images/logo.png"
+                  alt="Jaguar Security Services"
+                  fill
+                  className="object-contain drop-shadow-2xl"
+                  sizes="320px"
+                />
               </div>
             </div>
           </div>
         </div>
 
-        <div className="gold-line absolute bottom-0 left-0 right-0" />
+        <div className="gold-gradient absolute bottom-0 left-0 right-0 h-1" />
       </section>
 
       <PillarBar />
@@ -136,7 +136,6 @@ export default function HomePage() {
               title="Securing Your Environment"
               description="Choose our premium security services for complete peace of mind. Expert protection tailored to your needs."
               centered
-              dark
             />
           </AnimatedSection>
 
@@ -164,11 +163,10 @@ export default function HomePage() {
                 label="Our Services"
                 title="Complete Protection Solutions"
                 description="One trusted partner for security, facilities support, cleaning and sector-specific protection."
-                dark
               />
               <Link
                 href="/services"
-                className="inline-flex shrink-0 items-center gap-2 text-xs font-bold tracking-widest text-jaguar-gold-bright uppercase hover:text-white"
+                className="inline-flex shrink-0 items-center gap-2 text-xs font-bold tracking-widest text-jaguar-gold-bright uppercase hover:text-jaguar-black"
               >
                 View All Services
                 <ArrowRight className="h-4 w-4" />
@@ -195,7 +193,6 @@ export default function HomePage() {
               title="Your Trusted Security Partner"
               description="Reliable, flexible and professional — delivering complete peace of mind across every sector."
               centered
-              dark
             />
           </AnimatedSection>
 
@@ -206,10 +203,10 @@ export default function HomePage() {
                   <div className="icon-ring mx-auto h-16 w-16">
                     <item.icon className="h-7 w-7 text-jaguar-gold-bright" />
                   </div>
-                  <h3 className="mt-6 text-lg font-semibold text-white">
+                  <h3 className="mt-6 text-lg font-semibold text-jaguar-black">
                     {item.title}
                   </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-white/55">
+                  <p className="mt-3 text-sm leading-relaxed text-jaguar-black/55">
                     {item.description}
                   </p>
                 </div>
@@ -227,7 +224,6 @@ export default function HomePage() {
               label="Client Feedback"
               title="What Clients Say About Us"
               centered
-              dark
             />
           </AnimatedSection>
 
@@ -236,14 +232,14 @@ export default function HomePage() {
               <AnimatedSection key={item.author} delay={i * 120}>
                 <div className="elegant-card flex h-full flex-col border-l-2 border-l-jaguar-gold-bright/40 p-8">
                   <Quote className="h-7 w-7 text-jaguar-gold-bright/50" />
-                  <p className="mt-5 flex-1 font-[family-name:var(--font-cormorant)] text-lg leading-relaxed text-white/80 italic">
+                  <p className="mt-5 flex-1 font-[family-name:var(--font-cormorant)] text-lg leading-relaxed text-jaguar-black/75 italic">
                     &ldquo;{item.quote}&rdquo;
                   </p>
-                  <div className="mt-8 border-t border-white/8 pt-5">
+                  <div className="mt-8 border-t border-jaguar-black/8 pt-5">
                     <p className="font-semibold text-jaguar-gold-bright">
                       {item.author}
                     </p>
-                    <p className="mt-1 text-xs tracking-wide text-white/45">
+                    <p className="mt-1 text-xs tracking-wide text-jaguar-black/45">
                       {item.location}
                     </p>
                   </div>

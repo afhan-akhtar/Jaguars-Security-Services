@@ -47,7 +47,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
       >
         <Link
           href="/services"
-          className="animate-fade-up-delay-3 mt-6 inline-flex items-center gap-1 text-sm font-bold text-jaguar-gold-bright hover:text-white"
+          className="animate-fade-up-delay-3 mt-6 inline-flex items-center gap-1 text-sm font-bold text-jaguar-gold-light hover:text-white"
         >
           &larr; All Services
         </Link>
@@ -58,10 +58,10 @@ export default async function ServiceDetailPage({ params }: PageProps) {
           <div className="grid gap-12 lg:grid-cols-3">
             <div className="lg:col-span-2">
               <AnimatedSection>
-                <h2 className="font-[family-name:var(--font-cormorant)] text-3xl font-bold text-white">
+                <h2 className="font-[family-name:var(--font-cormorant)] text-3xl font-bold text-jaguar-black">
                   Services We Provide
                 </h2>
-                <p className="mt-3 text-white/65">
+                <p className="mt-3 text-jaguar-black/65">
                   Comprehensive {category.title.toLowerCase()} tailored to
                   your site requirements.
                 </p>
@@ -72,7 +72,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                   <AnimatedSection key={service} delay={i * 50}>
                     <div className="elegant-card flex items-start gap-3 p-5">
                       <CheckCircle className="mt-0.5 h-5 w-5 shrink-0 text-jaguar-gold-bright" />
-                      <span className="text-sm font-medium text-white/90">
+                      <span className="text-sm font-medium text-jaguar-black/85">
                         {service}
                       </span>
                     </div>
@@ -96,13 +96,13 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                   <h3 className="font-[family-name:var(--font-cormorant)] text-2xl font-bold text-jaguar-gold-bright">
                     Request This Service
                   </h3>
-                  <p className="mt-3 text-sm leading-relaxed text-white/65">
+                  <p className="mt-3 text-sm leading-relaxed text-jaguar-black/65">
                     Contact us today for a free consultation and tailored quote
                     for your {category.title.toLowerCase()} requirements.
                   </p>
                   <Link
                     href="/contact"
-                    className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-jaguar-gold-bright px-6 py-3.5 text-sm font-bold text-jaguar-black transition-all hover:bg-jaguar-gold gold-glow"
+                    className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-jaguar-gold-bright px-6 py-3.5 text-sm font-bold text-white transition-all hover:bg-jaguar-gold-light gold-glow"
                   >
                     Get a Quote
                     <ArrowRight className="h-4 w-4" />
@@ -116,13 +116,13 @@ export default async function ServiceDetailPage({ params }: PageProps) {
 
       <section className="section-charcoal py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <h2 className="text-xl font-bold text-white">Other Services</h2>
+          <h2 className="text-xl font-bold text-jaguar-black">Other Services</h2>
           <div className="mt-6 flex flex-wrap gap-3">
             {otherServices.map((service) => (
               <Link
                 key={service.slug}
                 href={`/services/${service.slug}`}
-                className="rounded-full border border-white/15 bg-jaguar-black/40 px-5 py-2 text-sm font-medium text-white/75 transition-all hover:border-jaguar-gold-bright hover:text-jaguar-gold-bright"
+                className="rounded-full border border-jaguar-black/12 bg-white px-5 py-2 text-sm font-medium text-jaguar-black/70 transition-all hover:border-jaguar-gold-bright hover:text-jaguar-gold-bright"
               >
                 {service.title}
               </Link>

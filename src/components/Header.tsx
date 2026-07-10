@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { Menu, Phone, X } from "lucide-react";
 import Logo from "./Logo";
@@ -14,8 +15,12 @@ const navLinks = [
 ];
 
 export default function Header() {
+  const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  const isHome = pathname === "/";
+  const overHero = isHome && !scrolled;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -24,14 +29,32 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
+  const navClass = overHero
+    ? "text-white/80 hover:text-jaguar-gold-light after:bg-jaguar-gold-light"
+    : "text-jaguar-black/65 hover:text-jaguar-gold-bright after:bg-jaguar-gold-bright";
+
+  const quoteClass = overHero
+    ? "border-white/35 text-white hover:border-jaguar-gold-light hover:bg-white/10"
+    : "border-jaguar-gold/40 text-jaguar-gold hover:border-jaguar-gold-bright hover:bg-jaguar-gold-bright/10";
+
   return (
-    <header className="sticky top-0 z-50">
-      <div className="gold-gradient h-px" />
+    <header className="fixed top-0 z-50 w-full">
+      <div
+        className={`gold-gradient transition-opacity duration-500 ${
+          overHero ? "h-0.5 opacity-80" : "h-px opacity-100"
+        }`}
+      />
       <div
         className={`transition-all duration-500 ${
           scrolled
-            ? "border-b border-white/8 bg-jaguar-black/95 py-3 shadow-2xl shadow-black/40 backdrop-blur-xl"
-            : "border-b border-transparent bg-jaguar-black/70 py-4 backdrop-blur-md"
+            ? "border-b border-jaguar-black/8 bg-white/95 py-3 shadow-lg shadow-black/8 backdrop-blur-xl"
+            : overHero
+              ? "border-b border-white/10 bg-black/20 py-5 backdrop-blur-md"
+              : "border-b border-transparent bg-white/85 py-4 backdrop-blur-md"
         }`}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
@@ -47,14 +70,14 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="relative text-xs font-semibold tracking-[0.12em] text-white/65 uppercase transition-colors hover:text-jaguar-gold-bright after:absolute after:-bottom-1.5 after:left-0 after:h-px after:w-0 after:bg-jaguar-gold-bright after:transition-all hover:after:w-full"
+                className={`relative text-xs font-semibold tracking-[0.12em] uppercase transition-colors after:absolute after:-bottom-1.5 after:left-0 after:h-px after:w-0 after:transition-all hover:after:w-full ${navClass}`}
               >
                 {link.label}
               </Link>
             ))}
             <Link
               href="/contact"
-              className="rounded-full border border-jaguar-gold/30 px-5 py-2.5 text-xs font-bold tracking-widest text-jaguar-gold-bright uppercase transition-all hover:border-jaguar-gold-bright hover:bg-jaguar-gold-bright/10"
+              className={`rounded-full border px-5 py-2.5 text-xs font-bold tracking-widest uppercase transition-all ${quoteClass}`}
             >
               Get a Quote
             </Link>
@@ -69,7 +92,7 @@ export default function Header() {
 
           <button
             type="button"
-            className="rounded-lg p-2 text-white lg:hidden"
+            className={`rounded-lg p-2 lg:hidden ${overHero ? "text-white" : "text-jaguar-black"}`}
             onClick={() => setOpen(!open)}
             aria-label={open ? "Close menu" : "Open menu"}
             aria-expanded={open}
@@ -79,8 +102,10 @@ export default function Header() {
         </div>
 
         <div
-          className={`overflow-hidden border-t border-white/8 bg-jaguar-charcoal transition-all duration-300 lg:hidden ${
-            open ? "max-h-96 opacity-100" : "max-h-0 opacity-0 border-transparent"
+          className={`overflow-hidden border-t transition-all duration-300 lg:hidden ${
+            open
+              ? "max-h-96 border-jaguar-black/8 bg-white opacity-100"
+              : "max-h-0 border-transparent opacity-0"
           }`}
         >
           <nav className="px-4 py-6" aria-label="Mobile navigation">
@@ -89,7 +114,7 @@ export default function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-sm font-medium tracking-wide text-white/85 hover:text-jaguar-gold-bright"
+                  className="text-sm font-medium tracking-wide text-jaguar-black/80 hover:text-jaguar-gold-bright"
                   onClick={() => setOpen(false)}
                 >
                   {link.label}

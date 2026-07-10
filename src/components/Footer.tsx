@@ -5,23 +5,23 @@ import { companyInfo, serviceCategories } from "@/lib/services";
 
 export default function Footer() {
   return (
-    <footer className="section-charcoal border-t border-jaguar-gold/15">
+    <footer className="section-charcoal border-t border-jaguar-gold/20">
       <div className="gold-gradient h-0.5" />
 
       <div className="mesh-gold mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <Logo size="footer" />
-            <p className="mt-5 text-sm leading-relaxed text-white/60">
+            <p className="mt-5 text-sm leading-relaxed text-jaguar-black/60">
               {companyInfo.motto}
             </p>
-            <p className="mt-3 text-sm font-semibold text-jaguar-gold-bright">
+            <p className="mt-3 text-sm font-semibold text-jaguar-gold">
               {companyInfo.tagline}
             </p>
           </div>
 
           <div className="lg:col-span-2">
-            <h3 className="mb-4 text-xs font-bold tracking-[0.25em] text-jaguar-gold-bright">
+            <h3 className="mb-4 text-xs font-bold tracking-[0.25em] text-jaguar-gold">
               QUICK LINKS
             </h3>
             <ul className="space-y-2.5">
@@ -34,7 +34,7 @@ export default function Footer() {
                 <li key={link.href}>
                   <Link
                     href={link.href}
-                    className="text-sm text-white/60 transition-colors hover:text-jaguar-gold-bright"
+                    className="text-sm text-jaguar-black/60 transition-colors hover:text-jaguar-gold-bright"
                   >
                     {link.label}
                   </Link>
@@ -44,7 +44,7 @@ export default function Footer() {
           </div>
 
           <div className="lg:col-span-3">
-            <h3 className="mb-4 text-xs font-bold tracking-[0.25em] text-jaguar-gold-bright">
+            <h3 className="mb-4 text-xs font-bold tracking-[0.25em] text-jaguar-gold">
               SERVICES
             </h3>
             <ul className="space-y-2.5">
@@ -52,7 +52,7 @@ export default function Footer() {
                 <li key={cat.slug}>
                   <Link
                     href={`/services/${cat.slug}`}
-                    className="text-sm text-white/60 transition-colors hover:text-jaguar-gold-bright"
+                    className="text-sm text-jaguar-black/60 transition-colors hover:text-jaguar-gold-bright"
                   >
                     {cat.title}
                   </Link>
@@ -62,14 +62,14 @@ export default function Footer() {
           </div>
 
           <div className="lg:col-span-3">
-            <h3 className="mb-4 text-xs font-bold tracking-[0.25em] text-jaguar-gold-bright">
+            <h3 className="mb-4 text-xs font-bold tracking-[0.25em] text-jaguar-gold">
               CONTACT
             </h3>
             <ul className="space-y-4">
               <li>
                 <a
                   href={`tel:${companyInfo.phone.replace(/\s/g, "")}`}
-                  className="flex items-start gap-3 text-sm text-white/60 transition-colors hover:text-jaguar-gold-bright"
+                  className="flex items-start gap-3 text-sm text-jaguar-black/60 transition-colors hover:text-jaguar-gold-bright"
                 >
                   <Phone className="mt-0.5 h-4 w-4 shrink-0 text-jaguar-gold-bright" />
                   <span>
@@ -82,13 +82,13 @@ export default function Footer() {
               <li>
                 <a
                   href={`mailto:${companyInfo.email}`}
-                  className="flex items-start gap-3 text-sm text-white/60 transition-colors hover:text-jaguar-gold-bright"
+                  className="flex items-start gap-3 text-sm text-jaguar-black/60 transition-colors hover:text-jaguar-gold-bright"
                 >
                   <Mail className="mt-0.5 h-4 w-4 shrink-0 text-jaguar-gold-bright" />
                   {companyInfo.email}
                 </a>
               </li>
-              <li className="flex items-start gap-3 text-sm text-white/60">
+              <li className="flex items-start gap-3 text-sm text-jaguar-black/60">
                 <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-jaguar-gold-bright" />
                 <span>{companyInfo.address.full}</span>
               </li>
@@ -99,15 +99,15 @@ export default function Footer() {
         <div className="gold-line mt-12" />
 
         <div className="mt-8 flex flex-col items-center justify-between gap-4 sm:flex-row">
-          <div className="flex flex-wrap items-center justify-center gap-2 text-xs font-bold tracking-[0.2em] text-jaguar-gold-bright sm:justify-start">
+          <div className="flex flex-wrap items-center justify-center gap-2 text-xs font-bold tracking-[0.2em] text-jaguar-gold sm:justify-start">
             {companyInfo.pillars.map((pillar, i) => (
               <span key={pillar} className="flex items-center gap-2">
-                {i > 0 && <span className="text-white/20">•</span>}
+                {i > 0 && <span className="text-jaguar-black/20">•</span>}
                 {pillar}
               </span>
             ))}
           </div>
-          <p className="text-xs text-white/35">
+          <p className="text-xs text-jaguar-black/40">
             &copy; {new Date().getFullYear()} {companyInfo.name}. All rights
             reserved.
           </p>

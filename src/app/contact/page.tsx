@@ -18,7 +18,7 @@ const contactItems = [
     content: (
       <>
         <p>Mobile: {companyInfo.phone}</p>
-        <p className="mt-1 text-white/50">
+        <p className="mt-1 text-jaguar-black/50">
           Landline: {companyInfo.landline}
         </p>
       </>
@@ -48,7 +48,7 @@ const contactItems = [
     content: (
       <>
         <p>24/7 Emergency Response</p>
-        <p className="mt-1 text-white/50">
+        <p className="mt-1 text-jaguar-black/50">
           Office enquiries: Mon – Fri, 9am – 5pm
         </p>
       </>
@@ -74,10 +74,10 @@ export default function ContactPage() {
           <div className="grid gap-16 lg:grid-cols-5">
             <div className="lg:col-span-2">
               <AnimatedSection>
-                <h2 className="font-[family-name:var(--font-cormorant)] text-3xl font-bold text-white">
+                <h2 className="font-[family-name:var(--font-cormorant)] text-3xl font-bold text-jaguar-black">
                   Contact Details
                 </h2>
-                <p className="mt-3 text-white/65">
+                <p className="mt-3 text-jaguar-black/65">
                   We&apos;re here to help with all your security and facilities
                   needs.
                 </p>
@@ -99,7 +99,7 @@ export default function ContactPage() {
                           <p className="text-xs font-bold tracking-[0.2em] text-jaguar-gold-bright">
                             {item.label}
                           </p>
-                          <div className="mt-2 text-sm font-medium text-white">
+                          <div className="mt-2 text-sm font-medium text-jaguar-black">
                             {item.content}
                           </div>
                         </div>
@@ -112,10 +112,10 @@ export default function ContactPage() {
 
             <AnimatedSection delay={200} className="lg:col-span-3">
               <div className="rounded-2xl glass-card p-8 sm:p-10">
-                <h2 className="font-[family-name:var(--font-cormorant)] text-3xl font-bold text-white">
+                <h2 className="font-[family-name:var(--font-cormorant)] text-3xl font-bold text-jaguar-black">
                   Send Us an Enquiry
                 </h2>
-                <p className="mt-2 text-sm text-white/50">
+                <p className="mt-2 text-sm text-jaguar-black/50">
                   Fill in the form and we&apos;ll get back to you as soon as
                   possible.
                 </p>

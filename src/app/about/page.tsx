@@ -61,14 +61,13 @@ export default function AboutPage() {
               <SectionHeading
                 label="WHO WE ARE"
                 title="Your One-Stop Security Partner"
-                dark
               />
-              <p className="mt-6 leading-relaxed text-white/75">
+              <p className="mt-6 leading-relaxed text-jaguar-black/75">
                 {companyInfo.description}
               </p>
               <Link
                 href="/services"
-                className="mt-8 inline-flex items-center gap-2 text-sm font-bold text-jaguar-gold-bright hover:text-white"
+                className="mt-8 inline-flex items-center gap-2 text-sm font-bold text-jaguar-gold-bright hover:text-jaguar-black"
               >
                 Explore Our Services
                 <ArrowRight className="h-4 w-4" />
@@ -86,11 +85,11 @@ export default function AboutPage() {
                     sizes="(max-width: 1024px) 100vw, 50vw"
                   />
                 </div>
-                <div className="border-t border-white/10 p-8">
+                <div className="border-t border-jaguar-black/8 p-8">
                   <p className="text-sm font-bold tracking-[0.3em] text-jaguar-gold-bright">
                     OUR COMMITMENT
                   </p>
-                  <p className="mt-3 font-[family-name:var(--font-cormorant)] text-2xl font-bold text-white">
+                  <p className="mt-3 font-[family-name:var(--font-cormorant)] text-2xl font-bold text-jaguar-black">
                     {companyInfo.motto}
                   </p>
                   <div className="mt-6 flex flex-wrap gap-3">
@@ -117,7 +116,6 @@ export default function AboutPage() {
               label="OUR VALUES"
               title="Built on Trust & Excellence"
               centered
-              dark
             />
           </AnimatedSection>
 
@@ -128,8 +126,8 @@ export default function AboutPage() {
                   <div className="icon-ring mx-auto h-14 w-14">
                     <value.icon className="h-6 w-6 text-jaguar-gold-bright" />
                   </div>
-                  <h3 className="mt-5 font-bold text-white">{value.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-white/65">
+                  <h3 className="mt-5 font-bold text-jaguar-black">{value.title}</h3>
+                  <p className="mt-3 text-sm leading-relaxed text-jaguar-black/65">
                     {value.description}
                   </p>
                 </div>

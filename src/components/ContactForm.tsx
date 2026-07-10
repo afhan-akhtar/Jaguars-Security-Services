@@ -53,16 +53,16 @@ export default function ContactForm() {
     return (
       <div className="animate-scale-in flex flex-col items-center rounded-2xl border border-jaguar-gold/30 bg-jaguar-gold/10 p-12 text-center">
         <CheckCircle className="h-16 w-16 text-jaguar-gold-bright" />
-        <h3 className="mt-4 font-[family-name:var(--font-cormorant)] text-2xl font-bold text-white">
+        <h3 className="mt-4 font-[family-name:var(--font-cormorant)] text-2xl font-bold text-jaguar-black">
           Message Sent Successfully
         </h3>
-        <p className="mt-2 text-white/60">
+        <p className="mt-2 text-jaguar-black/60">
           Thank you for contacting us. We will get back to you shortly.
         </p>
         <button
           type="button"
           onClick={() => setStatus("idle")}
-          className="mt-6 text-sm font-bold text-jaguar-gold-bright hover:text-white"
+          className="mt-6 text-sm font-bold text-jaguar-gold-bright hover:text-jaguar-black"
         >
           Send another message
         </button>
@@ -71,7 +71,7 @@ export default function ContactForm() {
   }
 
   const inputClass =
-    "w-full rounded-xl border border-white/10 bg-jaguar-black/60 px-4 py-3.5 text-white placeholder:text-white/30 transition-colors focus:border-jaguar-gold-bright focus:outline-none focus:ring-1 focus:ring-jaguar-gold-bright/30";
+    "w-full rounded-xl border border-jaguar-black/12 bg-white px-4 py-3.5 text-jaguar-black placeholder:text-jaguar-black/35 transition-colors focus:border-jaguar-gold-bright focus:outline-none focus:ring-1 focus:ring-jaguar-gold-bright/30";
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
@@ -79,7 +79,7 @@ export default function ContactForm() {
         <div>
           <label
             htmlFor="name"
-            className="mb-2 block text-sm font-medium text-white/80"
+            className="mb-2 block text-sm font-medium text-jaguar-black/75"
           >
             Full Name *
           </label>
@@ -95,7 +95,7 @@ export default function ContactForm() {
         <div>
           <label
             htmlFor="email"
-            className="mb-2 block text-sm font-medium text-white/80"
+            className="mb-2 block text-sm font-medium text-jaguar-black/75"
           >
             Email Address *
           </label>
@@ -114,7 +114,7 @@ export default function ContactForm() {
         <div>
           <label
             htmlFor="phone"
-            className="mb-2 block text-sm font-medium text-white/80"
+            className="mb-2 block text-sm font-medium text-jaguar-black/75"
           >
             Phone Number
           </label>
@@ -129,7 +129,7 @@ export default function ContactForm() {
         <div>
           <label
             htmlFor="service"
-            className="mb-2 block text-sm font-medium text-white/80"
+            className="mb-2 block text-sm font-medium text-jaguar-black/75"
           >
             Service Required
           </label>
@@ -155,7 +155,7 @@ export default function ContactForm() {
       <div>
         <label
           htmlFor="message"
-          className="mb-2 block text-sm font-medium text-white/80"
+          className="mb-2 block text-sm font-medium text-jaguar-black/75"
         >
           Message *
         </label>
@@ -170,7 +170,7 @@ export default function ContactForm() {
       </div>
 
       {status === "error" && (
-        <div className="flex items-center gap-2 rounded-xl border border-red-500/30 bg-red-500/10 px-4 py-3 text-sm text-red-400">
+        <div className="flex items-center gap-2 rounded-xl border border-red-400/40 bg-red-50 px-4 py-3 text-sm text-red-600">
           <AlertCircle className="h-4 w-4 shrink-0" />
           {errorMessage}
         </div>
@@ -179,7 +179,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={status === "loading"}
-        className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-jaguar-gold-bright px-8 py-4 text-sm font-bold tracking-wide text-jaguar-black transition-all hover:bg-jaguar-gold-light disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto gold-glow"
+        className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-jaguar-gold-bright px-8 py-4 text-sm font-bold tracking-wide text-white transition-all hover:bg-jaguar-gold-light disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto gold-glow"
       >
         {status === "loading" ? (
           "Sending..."
@@ -191,7 +191,7 @@ export default function ContactForm() {
         )}
       </button>
 
-      <p className="text-xs text-white/35">
+      <p className="text-xs text-jaguar-black/40">
         By submitting this form, you agree to your data being processed by
         Jaguar Security Services Ltd for the purpose of responding to your
         enquiry.

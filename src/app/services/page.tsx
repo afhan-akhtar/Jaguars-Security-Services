@@ -48,7 +48,6 @@ export default function ServicesPage() {
               title="What Our Services Include"
               description="Every service is delivered by trained professionals with a focus on reliability, flexibility and client satisfaction."
               centered
-              dark
             />
           </AnimatedSection>
 
@@ -63,7 +62,7 @@ export default function ServicesPage() {
                     {category.services.map((service) => (
                       <li
                         key={service}
-                        className="flex items-start gap-2 text-sm text-white/70"
+                        className="flex items-start gap-2 text-sm text-jaguar-black/70"
                       >
                         <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-jaguar-gold-bright" />
                         {service}
@@ -72,7 +71,7 @@ export default function ServicesPage() {
                   </ul>
                   <Link
                     href={`/services/${category.slug}`}
-                    className="mt-6 inline-flex items-center gap-1 text-sm font-bold text-jaguar-gold-bright hover:text-white"
+                    className="mt-6 inline-flex items-center gap-1 text-sm font-bold text-jaguar-gold-bright hover:text-jaguar-black"
                   >
                     Learn More
                     <ArrowRight className="h-3.5 w-3.5" />
