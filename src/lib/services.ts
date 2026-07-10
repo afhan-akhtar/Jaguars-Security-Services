@@ -211,7 +211,7 @@ export const testimonials = [
   },
 ];
 
-export const heroImage = "/images/services/hero.jpg";
+export const heroImage = "/images/hero.jpg";
 
 export const pageImages = {
   about: "/images/services/about.jpg",
