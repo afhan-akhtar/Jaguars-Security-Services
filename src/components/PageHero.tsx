@@ -38,7 +38,7 @@ export default function PageHero({
       )}
 
       <div
-        className={`relative mx-auto flex min-h-[48vh] max-w-7xl flex-col justify-center px-4 py-24 sm:px-6 lg:min-h-[52vh] lg:px-8 ${
+        className={`relative mx-auto flex min-h-[48vh] max-w-7xl flex-col justify-center px-4 pb-20 pt-32 sm:px-6 sm:pt-36 lg:min-h-[52vh] lg:px-8 lg:pb-24 lg:pt-40 ${
           centered ? "items-center text-center" : ""
         }`}
       >
