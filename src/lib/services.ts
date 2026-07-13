@@ -302,10 +302,12 @@ export const companyInfo = {
   email: "info@jaguarsecurityservices.co.uk",
   website: "https://www.jaguarsecurityservices.co.uk",
   address: {
-    line1: "355 Broadway",
-    line2: "Chadderton, Oldham",
-    postcode: "OL9 8RN",
-    full: "355 Broadway, Chadderton, Oldham OL9 8RN",
+    line1: "66 Boyle St",
+    line2: "Cheetham Hill, Manchester",
+    postcode: "M8 8UW",
+    full: "66 Boyle St, Cheetham Hill, Manchester M8 8UW",
+    mapsUrl:
+      "https://www.google.com/maps/search/?api=1&query=66+Boyle+St,+Cheetham+Hill,+Manchester+M8+8UW",
   },
   description:
     "We provide professional security-led facilities and cleaning support services for commercial, residential, retail, construction, healthcare, education and warehouse clients. Alongside our core security services, we also offer facilities support, reception services, cleaning services, warehouse security services, healthcare security and education sector security. Our aim is to provide clients with a reliable, flexible and professional one-stop solution for security, site protection, building support and day-to-day operational support.",

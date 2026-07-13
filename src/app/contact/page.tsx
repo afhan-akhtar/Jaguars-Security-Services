@@ -58,6 +58,8 @@ const contactItems = [
         <p>{companyInfo.address.postcode}</p>
       </>
     ),
+    href: companyInfo.address.mapsUrl,
+    external: true,
   },
   {
     icon: Clock,
@@ -119,7 +121,14 @@ export default function ContactPage() {
                   return (
                     <AnimatedSection key={item.href ?? item.label} delay={i * 100}>
                       <Wrapper
-                        {...(item.href ? { href: item.href } : {})}
+                        {...(item.href
+                          ? {
+                              href: item.href,
+                              ...(item.external
+                                ? { target: "_blank", rel: "noopener noreferrer" }
+                                : {}),
+                            }
+                          : {})}
                         className="elegant-card flex items-start gap-4 p-5 transition-colors hover:border-jaguar-gold-bright/40"
                       >
                         <div className="icon-ring-solid h-12 w-12 shrink-0">

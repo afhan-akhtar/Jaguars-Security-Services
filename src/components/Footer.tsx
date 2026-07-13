@@ -120,9 +120,16 @@ export default function Footer() {
                   {companyInfo.email}
                 </a>
               </li>
-              <li className="flex items-start gap-3 text-sm text-white/55">
-                <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-jaguar-gold-light" />
-                <span>{companyInfo.address.full}</span>
+              <li>
+                <a
+                  href={companyInfo.address.mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-start gap-3 text-sm text-white/55 transition-colors hover:text-jaguar-gold-light"
+                >
+                  <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-jaguar-gold-light" />
+                  <span>{companyInfo.address.full}</span>
+                </a>
               </li>
             </ul>
           </div>

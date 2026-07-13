@@ -110,9 +110,14 @@ export default function BusinessCard() {
 
             <div className="mt-5 flex items-start gap-3 border-t border-jaguar-black/8 pt-5">
               <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-jaguar-gold-bright" />
-              <p className="text-sm leading-relaxed text-body">
+              <a
+                href={companyInfo.address.mapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm leading-relaxed text-body transition-colors hover:text-jaguar-gold-bright"
+              >
                 {companyInfo.address.full}
-              </p>
+              </a>
             </div>
           </div>
 
