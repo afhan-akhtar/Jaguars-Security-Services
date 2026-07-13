@@ -176,6 +176,108 @@ body {
     inset 0 1px 0 rgba(232, 185, 35, 0.2);
 }
 
+.header-shell-light {
+  background: linear-gradient(
+    180deg,
+    #fffdf9 0%,
+    var(--jaguar-cream) 100%
+  );
+  border-bottom: 1px solid rgba(184, 148, 31, 0.16);
+  box-shadow: 0 8px 24px rgba(26, 26, 26, 0.05);
+}
+
+.brand-wordmark {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.brand-wordmark-title {
+  display: flex;
+  align-items: center;
+  font-family: var(--font-montserrat), system-ui, sans-serif;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.06em;
+}
+
+.brand-wordmark-title-md {
+  font-size: 1.35rem;
+}
+
+.brand-wordmark-title-sm {
+  font-size: 1.15rem;
+}
+
+.brand-wordmark-title-light {
+  color: #ffffff;
+  -webkit-text-stroke: 0.6px rgba(0, 0, 0, 0.45);
+}
+
+.brand-wordmark-title-dark {
+  color: var(--jaguar-black);
+}
+
+.brand-wordmark-title-dark .brand-wordmark-a-svg {
+  filter: drop-shadow(0 1px 1px rgba(26, 26, 26, 0.12));
+}
+
+.brand-wordmark-a-wrap {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 0.72em;
+  margin: 0 0.02em;
+}
+
+.brand-wordmark-a-svg {
+  width: 0.72em;
+  height: 0.86em;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.2));
+}
+
+.brand-wordmark-divider {
+  width: 100%;
+  max-width: 11rem;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    var(--jaguar-gold-bright) 0%,
+    var(--jaguar-gold-light) 50%,
+    var(--jaguar-gold-bright) 100%
+  );
+  opacity: 0.9;
+}
+
+.brand-wordmark-subtitle {
+  margin: 0;
+  font-family: var(--font-montserrat), system-ui, sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  line-height: 1;
+}
+
+.brand-wordmark-subtitle-md {
+  font-size: 0.5rem;
+  letter-spacing: 0.28em;
+}
+
+.brand-wordmark-subtitle-sm {
+  font-size: 0.45rem;
+  letter-spacing: 0.26em;
+}
+
+@media (min-width: 640px) {
+  .brand-wordmark-title-md {
+    font-size: 1.5rem;
+  }
+
+  .brand-wordmark-subtitle-md {
+    font-size: 0.52rem;
+    letter-spacing: 0.3em;
+  }
+}
+
 .hero-logo-showcase {
   position: relative;
   padding: 6px;

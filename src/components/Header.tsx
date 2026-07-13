@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { Menu, Phone, X } from "lucide-react";
 import Logo from "./Logo";
+import CompanyWordmark from "./CompanyWordmark";
 import { companyInfo } from "@/lib/services";
 
 const navLinks = [
@@ -44,9 +45,7 @@ export default function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
   const scrolled = useScrolled();
-
-  const isHome = pathname === "/";
-  const overHero = isHome && !scrolled;
+  const atTop = !scrolled;
 
   useEffect(() => {
     setOpen(false);
@@ -68,36 +67,31 @@ export default function Header() {
     };
   }, [open]);
 
-  const navClass = overHero
-    ? "text-white/80 hover:text-jaguar-gold-light after:bg-jaguar-gold-light"
-    : "text-jaguar-black/65 hover:text-jaguar-gold-bright after:bg-jaguar-gold-bright";
+  const navClass =
+    "text-white/80 hover:text-jaguar-gold-light after:bg-jaguar-gold-light";
 
-  const navActiveClass = overHero
-    ? "text-jaguar-gold-light after:w-full"
-    : "text-jaguar-gold-bright after:w-full";
+  const navActiveClass = "text-jaguar-gold-light after:w-full";
 
-  const quoteClass = overHero
-    ? "border-white/35 text-white hover:border-jaguar-gold-light hover:bg-white/10"
-    : "border-jaguar-gold/40 text-jaguar-gold hover:border-jaguar-gold-bright hover:bg-jaguar-gold-bright/10";
+  const quoteClass =
+    "border-white/35 text-white hover:border-jaguar-gold-light hover:bg-white/10";
 
-  const shellClass = scrolled
-    ? "border-b border-jaguar-black/8 bg-white/95 py-3 shadow-lg shadow-black/8 backdrop-blur-xl"
-    : overHero
-      ? "border-b border-white/10 bg-black/20 py-5 backdrop-blur-md"
-      : "border-b border-transparent bg-white/85 py-4 backdrop-blur-md";
+  const shellClass = atTop
+    ? "border-b border-white/10 bg-black/20 py-5 backdrop-blur-md"
+    : "border-b border-jaguar-gold/20 bg-jaguar-black/95 py-3 shadow-lg shadow-black/25 backdrop-blur-xl";
 
   return (
     <>
       <header className="fixed top-0 z-50 w-full">
-        <div
-          className={`gold-gradient transition-opacity duration-500 ${
-            overHero ? "h-0.5 opacity-80" : "h-px opacity-100"
-          }`}
-        />
+        <div className="gold-gradient h-0.5 opacity-80 transition-opacity duration-500" />
         <div className={`transition-all duration-500 ${shellClass}`}>
           <div className="mx-auto flex max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-            <Link href="/" aria-label="Jaguar Security Services home">
-              <Logo />
+            <Link
+              href="/"
+              aria-label="Jaguar Security Services home"
+              className="flex items-center gap-3 sm:gap-3.5"
+            >
+              <Logo variant="icon" />
+              <CompanyWordmark variant="light" />
             </Link>
 
             <nav
@@ -134,7 +128,7 @@ export default function Header() {
 
             <button
               type="button"
-              className={`rounded-lg p-2 lg:hidden ${overHero ? "text-white" : "text-jaguar-black"}`}
+              className="rounded-lg p-2 text-white lg:hidden"
               onClick={() => setOpen(true)}
               aria-label="Open menu"
               aria-expanded={open}
@@ -157,18 +151,21 @@ export default function Header() {
         />
 
         <aside
-          className={`fixed top-0 right-0 z-[70] flex h-full w-[min(320px,88vw)] flex-col bg-white shadow-2xl transition-transform duration-300 ease-out ${
+          className={`fixed top-0 right-0 z-[70] flex h-full w-[min(320px,88vw)] flex-col bg-jaguar-black shadow-2xl transition-transform duration-300 ease-out ${
             open ? "translate-x-0" : "translate-x-full"
           }`}
           aria-label="Mobile navigation"
         >
           <div className="gold-gradient h-1" />
 
-          <div className="flex items-center justify-between border-b border-jaguar-black/8 px-5 py-4">
-            <Logo size="footer" />
+          <div className="flex items-center justify-between border-b border-white/10 px-5 py-4">
+            <div className="flex items-center gap-3">
+              <Logo variant="icon" />
+              <CompanyWordmark variant="light" size="sm" />
+            </div>
             <button
               type="button"
-              className="rounded-lg p-2 text-jaguar-black hover:bg-jaguar-charcoal"
+              className="rounded-lg p-2 text-white hover:bg-white/10"
               onClick={() => setOpen(false)}
               aria-label="Close menu"
             >
@@ -187,8 +184,8 @@ export default function Header() {
                     aria-current={active ? "page" : undefined}
                     className={`rounded-lg px-4 py-3.5 text-base font-semibold tracking-wide transition-colors ${
                       active
-                        ? "bg-jaguar-gold-bright/12 text-jaguar-gold-bright"
-                        : "text-jaguar-black/80 hover:bg-jaguar-charcoal hover:text-jaguar-gold-bright"
+                        ? "bg-jaguar-gold-bright/15 text-jaguar-gold-light"
+                        : "text-white/80 hover:bg-white/10 hover:text-jaguar-gold-light"
                     }`}
                     onClick={() => setOpen(false)}
                   >
@@ -198,7 +195,7 @@ export default function Header() {
               })}
             </div>
 
-            <div className="mt-auto space-y-3 border-t border-jaguar-black/8 pt-6">
+            <div className="mt-auto space-y-3 border-t border-white/10 pt-6">
               <Link
                 href="/contact"
                 className="flex w-full items-center justify-center rounded-full bg-jaguar-gold-bright px-6 py-3.5 text-xs font-bold tracking-widest text-jaguar-black uppercase transition-all hover:bg-jaguar-gold-light"
@@ -208,7 +205,7 @@ export default function Header() {
               </Link>
               <a
                 href={`tel:${companyInfo.phone.replace(/\s/g, "")}`}
-                className="flex w-full items-center justify-center gap-2 rounded-full border border-jaguar-gold/40 px-6 py-3.5 text-xs font-bold tracking-wide text-jaguar-gold uppercase transition-all hover:bg-jaguar-gold-bright/10"
+                className="flex w-full items-center justify-center gap-2 rounded-full border border-white/30 px-6 py-3.5 text-xs font-bold tracking-wide text-white uppercase transition-all hover:border-jaguar-gold-light hover:bg-white/10"
               >
                 <Phone className="h-4 w-4" />
                 {companyInfo.phone}

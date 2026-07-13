@@ -3,6 +3,7 @@ import Image from "next/image";
 interface LogoProps {
   className?: string;
   size?: "header" | "footer" | "card" | "hero";
+  variant?: "full" | "icon";
 }
 
 const config = {
@@ -12,6 +13,13 @@ const config = {
     image: "p-1",
     sizes: "(max-width: 640px) 64px, 72px",
     rounded: "rounded-xl",
+  },
+  headerIcon: {
+    src: "/images/logo-icon.png",
+    box: "h-12 w-10 sm:h-14 sm:w-11",
+    image: "p-0.5",
+    sizes: "56px",
+    rounded: "rounded-lg",
   },
   footer: {
     src: "/images/logo.png",
@@ -36,8 +44,27 @@ const config = {
   },
 };
 
-export default function Logo({ className = "", size = "header" }: LogoProps) {
-  const c = config[size];
+export default function Logo({
+  className = "",
+  size = "header",
+  variant = "full",
+}: LogoProps) {
+  const c = variant === "icon" ? config.headerIcon : config[size];
+
+  if (variant === "icon") {
+    return (
+      <Image
+        src={c.src}
+        alt="Jaguar Security Services Ltd"
+        width={336}
+        height={400}
+        unoptimized
+        className={`h-12 w-auto shrink-0 sm:h-14 ${className}`}
+        sizes={c.sizes}
+        priority
+      />
+    );
+  }
 
   return (
     <div
