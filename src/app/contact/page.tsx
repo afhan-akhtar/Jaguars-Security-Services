@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import { companyInfo, pageImages } from "@/lib/services";
 import AnimatedSection from "@/components/AnimatedSection";
-import BusinessCard from "@/components/BusinessCard";
 import ContactForm from "@/components/ContactForm";
 import PageHero from "@/components/PageHero";
 import PillarBar from "@/components/PillarBar";
@@ -10,7 +9,7 @@ import SectionHeading from "@/components/SectionHeading";
 
 export const metadata: Metadata = {
   title: "Contact Us",
-  description: `Get in touch with ${companyInfo.name} for a free security quote. Call ${companyInfo.phone} or email ${companyInfo.email}.`,
+  description: `Get in touch with ${companyInfo.name} for a free security quote. Call ${companyInfo.phone}, ${companyInfo.phone2} or email ${companyInfo.email}.`,
 };
 
 const contactItems = [
@@ -19,6 +18,12 @@ const contactItems = [
     label: "Mobile",
     content: <p>{companyInfo.phone}</p>,
     href: `tel:${companyInfo.phone.replace(/\s/g, "")}`,
+  },
+  {
+    icon: Phone,
+    label: "Mobile",
+    content: <p>{companyInfo.phone2}</p>,
+    href: `tel:${companyInfo.phone2.replace(/\s/g, "")}`,
   },
   {
     icon: Phone,
@@ -73,7 +78,20 @@ export default function ContactPage() {
       <section className="section-dark section-padding">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-            <div className="space-y-10">
+            <AnimatedSection delay={150} className="order-1 lg:order-2">
+              <div className="elegant-card p-8 sm:p-10 lg:sticky lg:top-28">
+                <SectionHeading
+                  label="ENQUIRY FORM"
+                  title="Send Us a Message"
+                  description="Fill in the form and we'll get back to you as soon as possible."
+                />
+                <div className="mt-8">
+                  <ContactForm />
+                </div>
+              </div>
+            </AnimatedSection>
+
+            <div className="order-2 space-y-10 lg:order-1">
               <AnimatedSection>
                 <SectionHeading
                   label="REACH US"
@@ -86,7 +104,7 @@ export default function ContactPage() {
                 {contactItems.map((item, i) => {
                   const Wrapper = item.href ? "a" : "div";
                   return (
-                    <AnimatedSection key={item.label} delay={i * 100}>
+                    <AnimatedSection key={item.href ?? item.label} delay={i * 100}>
                       <Wrapper
                         {...(item.href ? { href: item.href } : {})}
                         className="elegant-card flex items-start gap-4 p-5 transition-colors hover:border-jaguar-gold-bright/40"
@@ -107,24 +125,7 @@ export default function ContactPage() {
                   );
                 })}
               </div>
-
-              <AnimatedSection delay={200}>
-                <BusinessCard />
-              </AnimatedSection>
             </div>
-
-            <AnimatedSection delay={150}>
-              <div className="elegant-card p-8 sm:p-10 lg:sticky lg:top-28">
-                <SectionHeading
-                  label="ENQUIRY FORM"
-                  title="Send Us a Message"
-                  description="Fill in the form and we'll get back to you as soon as possible."
-                />
-                <div className="mt-8">
-                  <ContactForm />
-                </div>
-              </div>
-            </AnimatedSection>
           </div>
         </div>
       </section>

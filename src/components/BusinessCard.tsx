@@ -12,6 +12,12 @@ const contactItems = [
   },
   {
     icon: Phone,
+    label: "Mobile",
+    value: companyInfo.phone2,
+    href: `tel:${companyInfo.phone2.replace(/\s/g, "")}`,
+  },
+  {
+    icon: Phone,
     label: "Landline",
     value: companyInfo.landline,
     href: `tel:${companyInfo.landline.replace(/\s/g, "")}`,
@@ -52,7 +58,7 @@ export default function BusinessCard() {
 
             <ul className="mt-5 space-y-4">
               {contactItems.map((item) => (
-                <li key={item.label}>
+                <li key={item.href}>
                   <Link
                     href={item.href}
                     {...(item.external

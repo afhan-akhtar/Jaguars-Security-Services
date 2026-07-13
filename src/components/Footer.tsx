@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
 import Logo from "./Logo";
+import CompanyWordmark from "./CompanyWordmark";
 import { companyInfo, serviceCategories } from "@/lib/services";
 
 export default function Footer() {
@@ -11,7 +12,14 @@ export default function Footer() {
       <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
         <div className="grid gap-12 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <Logo size="footer" />
+            <Link
+              href="/"
+              aria-label="Jaguar Security Services home"
+              className="inline-flex items-center gap-3 sm:gap-3.5"
+            >
+              <Logo variant="icon" />
+              <CompanyWordmark variant="light" />
+            </Link>
             <p className="mt-5 text-sm leading-relaxed text-white/55">
               {companyInfo.description}
             </p>
