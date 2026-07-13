@@ -1,12 +1,13 @@
 import Image from "next/image";
 import type { ReactNode } from "react";
+import type { ImagePosition } from "@/lib/services";
 
 interface PageHeroProps {
   label: string;
   title: string;
   description?: string;
   image?: string;
-  imagePosition?: "top" | "center" | "bottom";
+  imagePosition?: ImagePosition;
   children?: ReactNode;
   centered?: boolean;
 }

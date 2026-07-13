@@ -2,12 +2,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
+import type { ImagePosition } from "@/lib/services";
+
 interface FeaturedServiceCardProps {
   title: string;
   description: string;
   image: string;
   href: string;
-  imagePosition?: "top" | "center" | "bottom";
+  imagePosition?: ImagePosition;
 }
 
 function imagePositionClass(position?: FeaturedServiceCardProps["imagePosition"]) {

@@ -1,10 +1,12 @@
+export type ImagePosition = "top" | "center" | "bottom";
+
 export interface ServiceOffering {
   slug: string;
   title: string;
   shortDescription: string;
   description: string;
   image: string;
-  imagePosition?: "top" | "center" | "bottom";
+  imagePosition?: ImagePosition;
   categorySlug: string;
   services: string[];
 }
@@ -14,7 +16,7 @@ export interface ServicePage {
   title: string;
   description: string;
   image: string;
-  imagePosition?: "top" | "center" | "bottom";
+  imagePosition?: ImagePosition;
   services: string[];
   type: "category" | "offering";
   categorySlug?: string;
@@ -28,7 +30,7 @@ export interface ServiceCategory {
   services: string[];
   icon: string;
   image: string;
-  imagePosition?: "top" | "center" | "bottom";
+  imagePosition?: ImagePosition;
 }
 
 export const serviceCategories: ServiceCategory[] = [
@@ -306,7 +308,15 @@ export const companyInfo = {
     "We provide professional security-led facilities and cleaning support services for commercial, residential, retail, construction, healthcare, education and warehouse clients. Alongside our core security services, we also offer facilities support, reception services, cleaning services, warehouse security services, healthcare security and education sector security. Our aim is to provide clients with a reliable, flexible and professional one-stop solution for security, site protection, building support and day-to-day operational support.",
 };
 
-export const heroServices = [
+export interface HeroService {
+  slug: string;
+  title: string;
+  description: string;
+  image: string;
+  imagePosition?: ImagePosition;
+}
+
+export const heroServices: HeroService[] = [
   {
     slug: "manned-guarding",
     title: "Manned Guarding",
