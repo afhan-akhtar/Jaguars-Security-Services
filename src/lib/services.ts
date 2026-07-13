@@ -311,6 +311,11 @@ export const companyInfo = {
   },
   description:
     "We provide professional security-led facilities and cleaning support services for commercial, residential, retail, construction, healthcare, education and warehouse clients. Alongside our core security services, we also offer facilities support, reception services, cleaning services, warehouse security services, healthcare security and education sector security. Our aim is to provide clients with a reliable, flexible and professional one-stop solution for security, site protection, building support and day-to-day operational support.",
+  quoteGuarantee: {
+    title: "Unbeatable Security and Services Rates — Guaranteed",
+    description:
+      "Already have a quote? Send it to us and we'll aim to beat it, without compromising on quality, reliability, or professionalism.",
+  },
 };
 
 export interface HeroService {

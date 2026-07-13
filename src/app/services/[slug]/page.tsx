@@ -7,6 +7,7 @@ import {
   getAllServiceSlugs,
   getRelatedServicePages,
   getServicePage,
+  companyInfo,
 } from "@/lib/services";
 import AnimatedSection from "@/components/AnimatedSection";
 import CTABlock from "@/components/CTABlock";
@@ -137,6 +138,9 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                   <p className="mt-3 text-sm leading-relaxed text-body">
                     Contact us today for a free consultation and tailored quote
                     for your {service.title.toLowerCase()} requirements.
+                  </p>
+                  <p className="mt-4 rounded-lg border border-jaguar-gold-bright/20 bg-jaguar-gold-bright/10 px-4 py-3 text-xs leading-relaxed text-body">
+                    {companyInfo.quoteGuarantee.description}
                   </p>
                   <Link
                     href="/contact"

@@ -81,7 +81,7 @@ export default function HomePage() {
                   Shaping Your{" "}
                   <span className="text-gradient-gold">Security</span>
                   <br />
-                  in Greater Manchester
+                  Across UK
                 </h1>
                 <p className="animate-fade-up-delay-2 mt-7 max-w-xl text-lg leading-relaxed text-white/75">
                   Professional manned guarding, facilities support and cleaning
@@ -248,8 +248,8 @@ export default function HomePage() {
 
       <CTABlock
         variant="gold"
-        title="Need Security You Can Trust?"
-        description="Get in touch today for a free, no-obligation quote. Our team is ready to protect your premises."
+        title={companyInfo.quoteGuarantee.title}
+        description={companyInfo.quoteGuarantee.description}
         buttonText="Request a Quote"
         buttonHref="/contact"
         image={pageImages.ctaQuote}

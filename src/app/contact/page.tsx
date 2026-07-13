@@ -95,6 +95,14 @@ export default function ContactPage() {
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
             <AnimatedSection delay={150} className="order-1 lg:order-2">
               <div className="elegant-card p-8 sm:p-10 lg:sticky lg:top-28">
+                <div className="mb-8 rounded-xl border border-jaguar-gold-bright/25 bg-jaguar-gold-bright/10 p-5 sm:p-6">
+                  <h3 className="font-[family-name:var(--font-cormorant)] text-xl font-semibold text-jaguar-black sm:text-2xl">
+                    {companyInfo.quoteGuarantee.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-body">
+                    {companyInfo.quoteGuarantee.description}
+                  </p>
+                </div>
                 <SectionHeading
                   label="ENQUIRY FORM"
                   title="Send Us a Message"
