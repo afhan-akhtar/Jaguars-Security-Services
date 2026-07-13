@@ -6,7 +6,11 @@ import { serviceCategories } from "@/lib/services";
 
 type FormStatus = "idle" | "loading" | "success" | "error";
 
-export default function ContactForm() {
+interface ContactFormProps {
+  accessKey: string;
+}
+
+export default function ContactForm({ accessKey }: ContactFormProps) {
   const [status, setStatus] = useState<FormStatus>("idle");
   const [errorMessage, setErrorMessage] = useState("");
 
@@ -34,7 +38,6 @@ export default function ContactForm() {
     }
 
     try {
-      const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
       if (!accessKey) {
         throw new Error("Contact form is not configured. Please try again later.");
       }

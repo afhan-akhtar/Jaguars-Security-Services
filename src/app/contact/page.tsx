@@ -74,6 +74,8 @@ const contactItems = [
 ];
 
 export default function ContactPage() {
+  const web3formsAccessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY ?? "";
+
   return (
     <>
       <PageHero
@@ -97,7 +99,7 @@ export default function ContactPage() {
                   description="Fill in the form and we'll get back to you as soon as possible."
                 />
                 <div className="mt-8">
-                  <ContactForm />
+                  <ContactForm accessKey={web3formsAccessKey} />
                 </div>
               </div>
             </AnimatedSection>
