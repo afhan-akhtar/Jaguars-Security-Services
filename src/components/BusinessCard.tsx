@@ -1,9 +1,21 @@
 import Link from "next/link";
-import { Globe, Mail, MapPin, Phone } from "lucide-react";
+import { Globe, Mail, MapPin, Phone, type LucideIcon } from "lucide-react";
 import Logo from "@/components/Logo";
 import { companyInfo } from "@/lib/services";
 
-const contactItems = [
+interface ContactEntry {
+  value: string;
+  href: string;
+  external?: boolean;
+}
+
+interface ContactItem {
+  icon: LucideIcon;
+  label: string;
+  values: ContactEntry[];
+}
+
+const contactItems: ContactItem[] = [
   {
     icon: Phone,
     label: "Mobile",
