@@ -42,7 +42,8 @@ export const serviceCategories: ServiceCategory[] = [
     description:
       "Our core security services provide round-the-clock protection for commercial, residential, retail and construction environments across Greater Manchester.",
     icon: "shield",
-    image: "/images/services/security-services.jpg",
+    image: "/images/services/security-services-guard.jpg",
+    imagePosition: "top",
     services: [
       "Manned Guarding",
       "Door Supervision",
@@ -106,7 +107,7 @@ export const serviceCategories: ServiceCategory[] = [
     description:
       "Extend your on-site team with professional facilities support that keeps buildings running smoothly day to day.",
     icon: "building-2",
-    image: "/images/services/facility-support.jpg",
+    image: "/images/services/facility-support-services.jpg",
     services: [
       "Reception Support",
       "Concierge Services",
@@ -167,7 +168,8 @@ export const serviceOfferings: ServiceOffering[] = [
       "Uniformed security officers providing visible deterrence and professional on-site protection.",
     description:
       "Our manned guarding teams deliver a visible, professional security presence for commercial, retail, construction and residential sites. SIA-licensed officers deter threats, manage access and protect people and property around the clock.",
-    image: "/images/services/manned-guarding.jpg",
+    image: "/images/services/manned-guarding-services.jpg",
+    imagePosition: "top",
     categorySlug: "security",
     services: [
       "Static Site Guarding",
@@ -207,7 +209,8 @@ export const serviceOfferings: ServiceOffering[] = [
       "Remote monitoring and real-time alerts to keep your premises secure around the clock.",
     description:
       "Our CCTV monitoring service provides professional remote surveillance for your premises. Trained operators monitor live feeds, verify incidents and coordinate rapid response to protect your site 24 hours a day.",
-    image: "/images/services/cctv-monitoring.jpg",
+    image: "/images/services/cctv-monitoring-services.jpg",
+    imagePosition: "top",
     categorySlug: "security",
     services: [
       "24/7 Remote CCTV Monitoring",
@@ -322,7 +325,8 @@ export const heroServices: HeroService[] = [
     title: "Manned Guarding",
     description:
       "Uniformed security officers providing visible deterrence and professional on-site protection.",
-    image: "/images/services/manned-guarding.jpg",
+    image: "/images/services/manned-guarding-services.jpg",
+    imagePosition: "top",
   },
   {
     slug: "mobile-patrols",
@@ -336,7 +340,8 @@ export const heroServices: HeroService[] = [
     title: "CCTV Monitoring",
     description:
       "Remote monitoring and real-time alerts to keep your premises secure around the clock.",
-    image: "/images/services/cctv-monitoring.jpg",
+    image: "/images/services/cctv-monitoring-services.jpg",
+    imagePosition: "top",
   },
   {
     slug: "key-holding",
@@ -351,7 +356,7 @@ export const heroServices: HeroService[] = [
     title: "Facilities Support",
     description:
       "Reception, concierge and visitor management for seamless front-of-house operations.",
-    image: "/images/services/facility-support.jpg",
+    image: "/images/services/facility-support-services.jpg",
   },
 ];
 
@@ -389,7 +394,7 @@ export const pageImages = {
   about: "/images/services/about.jpg",
   aboutTeam: "/images/services/guarding.jpg",
   contact: "/images/services/contact.jpg",
-  services: "/images/services/security-services.jpg",
+  services: "/images/services/security-services-guard.jpg",
   ctaQuote: "/images/services/office.jpg",
   ctaExplore: "/images/services/facilities.jpg",
 };
