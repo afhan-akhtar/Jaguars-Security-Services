@@ -27,17 +27,40 @@ export default function ContactForm() {
       botcheck: formData.get("botcheck") === "on",
     };
 
+    if (data.botcheck) {
+      setStatus("success");
+      form.reset();
+      return;
+    }
+
     try {
-      const res = await fetch("/api/contact", {
+      const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+      if (!accessKey) {
+        throw new Error("Contact form is not configured. Please try again later.");
+      }
+
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          name: data.name.trim(),
+          email: data.email.trim(),
+          phone: data.phone?.trim() || "Not provided",
+          service: data.service?.trim() || "Not specified",
+          message: data.message.trim(),
+          subject: `New Enquiry from ${data.name.trim()} - Jaguar Security Services`,
+          from_name: "Jaguar Security Services Website",
+        }),
       });
 
       const result = await res.json();
 
-      if (!res.ok) {
-        throw new Error(result.error || "Something went wrong");
+      if (!result.success) {
+        throw new Error(result.message || "Failed to send message. Please try again later.");
       }
 
       setStatus("success");
