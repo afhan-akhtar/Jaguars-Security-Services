@@ -3,7 +3,8 @@ import Image from "next/image";
 interface LogoProps {
   className?: string;
   size?: "header" | "footer" | "card" | "hero";
-  variant?: "full" | "icon";
+  variant?: "full" | "icon" | "wordmark";
+  placement?: "header" | "footer";
 }
 
 const config = {
@@ -42,13 +43,53 @@ const config = {
     sizes: "256px",
     rounded: "rounded-[2.5rem]",
   },
+  wordmark: {
+    src: "/images/logo-wordmark-header.png",
+    width: 1024,
+    height: 523,
+    heightClass:
+      "h-[4.75rem] w-auto sm:h-[5.75rem] md:h-24 lg:h-28 xl:h-32",
+    heightFooter: "h-20 w-auto sm:h-24 md:h-28 lg:h-32",
+    sizes: "(max-width: 640px) 200px, (max-width: 1024px) 260px, 320px",
+  },
+  wordmarkHeader: {
+    src: "/images/logo-wordmark-header-trimmed.png",
+    width: 888,
+    height: 287,
+    widthClass: "w-[250px] h-auto",
+    sizes: "250px",
+  },
 };
 
 export default function Logo({
   className = "",
   size = "header",
   variant = "full",
+  placement,
 }: LogoProps) {
+  if (variant === "wordmark") {
+    const isHeaderPlacement = placement === "header" || size === "header";
+    const wordmark = isHeaderPlacement ? config.wordmarkHeader : config.wordmark;
+    const defaultClass = isHeaderPlacement
+      ? config.wordmarkHeader.widthClass
+      : size === "footer"
+        ? config.wordmark.heightFooter
+        : config.wordmark.heightClass;
+
+    return (
+      <Image
+        src={wordmark.src}
+        alt="Jaguar Security Services Ltd"
+        width={wordmark.width}
+        height={wordmark.height}
+        unoptimized
+        className={`shrink-0 ${className || defaultClass}`}
+        sizes={wordmark.sizes}
+        priority
+      />
+    );
+  }
+
   const c = variant === "icon" ? config.headerIcon : config[size];
 
   if (variant === "icon") {

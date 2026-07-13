@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { Menu, Phone, X } from "lucide-react";
 import Logo from "./Logo";
-import CompanyWordmark from "./CompanyWordmark";
 import { companyInfo } from "@/lib/services";
 
 const navLinks = [
@@ -76,8 +75,8 @@ export default function Header() {
     "border-white/35 text-white hover:border-jaguar-gold-light hover:bg-white/10";
 
   const shellClass = atTop
-    ? "border-b border-white/10 bg-black/20 py-5 backdrop-blur-md"
-    : "border-b border-jaguar-gold/20 bg-jaguar-black/95 py-3 shadow-lg shadow-black/25 backdrop-blur-xl";
+    ? "border-b border-white/10 bg-black/20 py-2 backdrop-blur-md"
+    : "border-b border-jaguar-gold/20 bg-jaguar-black/95 py-1.5 shadow-lg shadow-black/25 backdrop-blur-xl";
 
   return (
     <>
@@ -88,10 +87,9 @@ export default function Header() {
             <Link
               href="/"
               aria-label="Jaguar Security Services home"
-              className="flex items-center gap-3 sm:gap-3.5"
+              className="flex items-center"
             >
-              <Logo variant="icon" />
-              <CompanyWordmark variant="light" />
+              <Logo variant="wordmark" size="header" placement="header" />
             </Link>
 
             <nav
@@ -159,9 +157,13 @@ export default function Header() {
           <div className="gold-gradient h-1" />
 
           <div className="flex items-center justify-between border-b border-white/10 px-5 py-4">
-            <div className="flex items-center gap-3">
-              <Logo variant="icon" />
-              <CompanyWordmark variant="light" size="sm" />
+            <div className="flex items-center">
+              <Logo
+                variant="wordmark"
+                size="header"
+                placement="header"
+                className="w-[250px]"
+              />
             </div>
             <button
               type="button"
