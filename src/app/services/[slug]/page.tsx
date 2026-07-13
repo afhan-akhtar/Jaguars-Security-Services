@@ -43,14 +43,20 @@ export default async function ServiceDetailPage({ params }: PageProps) {
     service.type === "offering" && service.categorySlug
       ? getServicePage(service.categorySlug)
       : null;
+  const descriptionParagraphs = service.description
+    .split("\n\n")
+    .map((paragraph) => paragraph.trim())
+    .filter(Boolean);
+  const heroDescription = descriptionParagraphs[0] ?? service.description;
 
   return (
     <>
       <PageHero
         label="OUR SERVICES"
         title={service.title}
-        description={service.description}
+        description={heroDescription}
         image={service.image}
+        imagePosition={service.imagePosition}
       >
         <div className="animate-fade-up-delay-3 mt-6 flex flex-wrap items-center gap-4">
           <Link
@@ -74,7 +80,17 @@ export default async function ServiceDetailPage({ params }: PageProps) {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid gap-12 lg:grid-cols-3">
             <div className="lg:col-span-2">
-              <AnimatedSection>
+              {descriptionParagraphs.length > 1 && (
+                <AnimatedSection>
+                  <div className="space-y-5 text-lg leading-relaxed text-body">
+                    {descriptionParagraphs.slice(1).map((paragraph) => (
+                      <p key={paragraph}>{paragraph}</p>
+                    ))}
+                  </div>
+                </AnimatedSection>
+              )}
+
+              <AnimatedSection className={descriptionParagraphs.length > 1 ? "mt-12" : ""}>
                 <SectionHeading
                   label="WHAT WE DELIVER"
                   title="Services We Provide"
@@ -103,7 +119,13 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                     src={service.image}
                     alt={service.title}
                     fill
-                    className="object-cover"
+                    className={`object-cover ${
+                      service.imagePosition === "top"
+                        ? "object-top"
+                        : service.imagePosition === "bottom"
+                          ? "object-bottom"
+                          : "object-center"
+                    }`}
                     sizes="400px"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-jaguar-black/60 to-transparent" />

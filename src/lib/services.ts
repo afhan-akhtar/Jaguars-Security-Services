@@ -4,6 +4,7 @@ export interface ServiceOffering {
   shortDescription: string;
   description: string;
   image: string;
+  imagePosition?: "top" | "center" | "bottom";
   categorySlug: string;
   services: string[];
 }
@@ -13,6 +14,7 @@ export interface ServicePage {
   title: string;
   description: string;
   image: string;
+  imagePosition?: "top" | "center" | "bottom";
   services: string[];
   type: "category" | "offering";
   categorySlug?: string;
@@ -26,6 +28,7 @@ export interface ServiceCategory {
   services: string[];
   icon: string;
   image: string;
+  imagePosition?: "top" | "center" | "bottom";
 }
 
 export const serviceCategories: ServiceCategory[] = [
@@ -79,7 +82,8 @@ export const serviceCategories: ServiceCategory[] = [
     description:
       "From campus patrols to reception support, we help educational institutions maintain safe, welcoming environments for students and staff.",
     icon: "graduation-cap",
-    image: "/images/services/education-services.jpg",
+    image: "/images/services/education-security.jpg",
+    imagePosition: "top",
     services: [
       "School Security",
       "College Security",
@@ -214,6 +218,27 @@ export const serviceOfferings: ServiceOffering[] = [
       "Integration with On-Site Security Teams",
     ],
   },
+  {
+    slug: "key-holding",
+    title: "Key Holding Services",
+    shortDescription:
+      "Protect your premises and give your team greater peace of mind with our professional key holding service.",
+    description:
+      "Protect your premises and give your team greater peace of mind with our professional key holding service. We securely hold your property keys and provide authorised access when required.\n\nOur trained security officers offer a reliable, professional response, helping reduce risk to employees and ensuring your premises remain supported outside normal working hours.",
+    image: "/images/services/key-holding-services.jpg",
+    imagePosition: "top",
+    categorySlug: "security",
+    services: [
+      "Secure Key Storage",
+      "Authorised Access Response",
+      "24/7 Emergency Call-Out",
+      "Lock and Unlock Services",
+      "Alarm Response with Key Access",
+      "Out-of-Hours Premises Support",
+      "Trained SIA-Licensed Officers",
+      "Reduced Risk to Your Team",
+    ],
+  },
 ];
 
 export function getServicePage(slug: string): ServicePage | null {
@@ -224,6 +249,7 @@ export function getServicePage(slug: string): ServicePage | null {
       title: offering.title,
       description: offering.description,
       image: offering.image,
+      imagePosition: offering.imagePosition,
       services: offering.services,
       type: "offering",
       categorySlug: offering.categorySlug,
@@ -237,6 +263,7 @@ export function getServicePage(slug: string): ServicePage | null {
       title: category.title,
       description: category.description,
       image: category.image,
+      imagePosition: category.imagePosition,
       services: category.services,
       type: "category",
     };
@@ -300,6 +327,14 @@ export const heroServices = [
     description:
       "Remote monitoring and real-time alerts to keep your premises secure around the clock.",
     image: "/images/services/cctv-monitoring.jpg",
+  },
+  {
+    slug: "key-holding",
+    title: "Key Holding Services",
+    description:
+      "Protect your premises and give your team greater peace of mind with our professional key holding service.",
+    image: "/images/services/key-holding-services.jpg",
+    imagePosition: "top",
   },
   {
     slug: "facilities",

@@ -6,8 +6,15 @@ interface PageHeroProps {
   title: string;
   description?: string;
   image?: string;
+  imagePosition?: "top" | "center" | "bottom";
   children?: ReactNode;
   centered?: boolean;
+}
+
+function imagePositionClass(position?: PageHeroProps["imagePosition"]) {
+  if (position === "top") return "object-top";
+  if (position === "bottom") return "object-bottom";
+  return "object-center";
 }
 
 export default function PageHero({
@@ -15,6 +22,7 @@ export default function PageHero({
   title,
   description,
   image,
+  imagePosition,
   children,
   centered = false,
 }: PageHeroProps) {
@@ -27,7 +35,7 @@ export default function PageHero({
             alt=""
             fill
             priority
-            className="object-cover"
+            className={`object-cover ${imagePositionClass(imagePosition)}`}
             sizes="100vw"
           />
           <div className="hero-page-overlay absolute inset-0" />

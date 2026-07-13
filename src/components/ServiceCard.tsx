@@ -12,6 +12,12 @@ import {
 } from "lucide-react";
 import type { ServiceCategory } from "@/lib/services";
 
+function imagePositionClass(position?: ServiceCategory["imagePosition"]) {
+  if (position === "top") return "object-top";
+  if (position === "bottom") return "object-bottom";
+  return "object-center";
+}
+
 const iconMap: Record<string, LucideIcon> = {
   shield: Shield,
   "heart-pulse": HeartPulse,
@@ -38,7 +44,7 @@ export default function ServiceCard({ category }: ServiceCardProps) {
           src={category.image}
           alt={category.title}
           fill
-          className="object-cover transition-transform duration-700 group-hover:scale-110"
+          className={`object-cover ${imagePositionClass(category.imagePosition)} transition-transform duration-700 group-hover:scale-110`}
           sizes="(max-width: 768px) 100vw, 33vw"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-jaguar-black/75 via-jaguar-black/20 to-transparent" />

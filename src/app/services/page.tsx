@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { pageImages, serviceCategories } from "@/lib/services";
+import { pageImages, serviceCategories, serviceOfferings } from "@/lib/services";
 import AnimatedSection from "@/components/AnimatedSection";
 import CTABlock from "@/components/CTABlock";
+import FeaturedServiceCard from "@/components/FeaturedServiceCard";
 import PageHero from "@/components/PageHero";
 import PillarBar from "@/components/PillarBar";
 import SectionHeading from "@/components/SectionHeading";
@@ -27,6 +28,32 @@ export default function ServicesPage() {
       />
 
       <PillarBar />
+
+      <section className="section-charcoal section-padding">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <AnimatedSection>
+            <SectionHeading
+              label="CORE SERVICES"
+              title="Specialist Security Solutions"
+              description="Dedicated services delivered by trained professionals — including key holding, manned guarding, mobile patrols and CCTV monitoring."
+              centered
+            />
+          </AnimatedSection>
+          <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {serviceOfferings.map((service, i) => (
+              <AnimatedSection key={service.slug} delay={i * 80}>
+                <FeaturedServiceCard
+                  title={service.title}
+                  description={service.shortDescription}
+                  image={service.image}
+                  imagePosition={service.imagePosition}
+                  href={`/services/${service.slug}`}
+                />
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
 
       <section className="section-dark section-padding">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

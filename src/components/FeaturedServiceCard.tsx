@@ -7,6 +7,13 @@ interface FeaturedServiceCardProps {
   description: string;
   image: string;
   href: string;
+  imagePosition?: "top" | "center" | "bottom";
+}
+
+function imagePositionClass(position?: FeaturedServiceCardProps["imagePosition"]) {
+  if (position === "top") return "object-top";
+  if (position === "bottom") return "object-bottom";
+  return "object-center";
 }
 
 export default function FeaturedServiceCard({
@@ -14,6 +21,7 @@ export default function FeaturedServiceCard({
   description,
   image,
   href,
+  imagePosition,
 }: FeaturedServiceCardProps) {
   return (
     <Link href={href} className="elegant-card card-shine group block">
@@ -22,7 +30,7 @@ export default function FeaturedServiceCard({
           src={image}
           alt={title}
           fill
-          className="object-cover transition-transform duration-700 group-hover:scale-110"
+          className={`object-cover ${imagePositionClass(imagePosition)} transition-transform duration-700 group-hover:scale-110`}
           sizes="(max-width: 768px) 50vw, 25vw"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-jaguar-black/80 via-jaguar-black/25 to-transparent" />
