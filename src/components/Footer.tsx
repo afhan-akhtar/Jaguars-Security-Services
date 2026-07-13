@@ -72,23 +72,30 @@ export default function Footer() {
               CONTACT
             </h3>
             <ul className="space-y-4">
-              <li>
-                <a
-                  href={`tel:${companyInfo.phone.replace(/\s/g, "")}`}
-                  className="flex items-start gap-3 text-sm text-white/55 transition-colors hover:text-jaguar-gold-light"
-                >
-                  <Phone className="mt-0.5 h-4 w-4 shrink-0 text-jaguar-gold-light" />
-                  <span>Mobile: {companyInfo.phone}</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href={`tel:${companyInfo.phone2.replace(/\s/g, "")}`}
-                  className="flex items-start gap-3 text-sm text-white/55 transition-colors hover:text-jaguar-gold-light"
-                >
-                  <Phone className="mt-0.5 h-4 w-4 shrink-0 text-jaguar-gold-light" />
-                  <span>Mobile: {companyInfo.phone2}</span>
-                </a>
+              <li className="flex items-start gap-3">
+                <Phone className="mt-0.5 h-4 w-4 shrink-0 text-jaguar-gold-light" />
+                <div>
+                  <p className="text-[0.65rem] font-bold tracking-widest text-jaguar-gold-light/80 uppercase">
+                    Mobile
+                  </p>
+                  <div className="mt-1.5 flex flex-col gap-1.5 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-2">
+                    <a
+                      href={`tel:${companyInfo.phone.replace(/\s/g, "")}`}
+                      className="text-sm text-white/55 transition-colors hover:text-jaguar-gold-light"
+                    >
+                      {companyInfo.phone}
+                    </a>
+                    <span className="hidden text-white/25 sm:inline" aria-hidden="true">
+                      ·
+                    </span>
+                    <a
+                      href={`tel:${companyInfo.phone2.replace(/\s/g, "")}`}
+                      className="text-sm text-white/55 transition-colors hover:text-jaguar-gold-light"
+                    >
+                      {companyInfo.phone2}
+                    </a>
+                  </div>
+                </div>
               </li>
               <li>
                 <a
@@ -96,7 +103,12 @@ export default function Footer() {
                   className="flex items-start gap-3 text-sm text-white/55 transition-colors hover:text-jaguar-gold-light"
                 >
                   <Phone className="mt-0.5 h-4 w-4 shrink-0 text-jaguar-gold-light" />
-                  <span>Landline: {companyInfo.landline}</span>
+                  <span>
+                    <span className="block text-[0.65rem] font-bold tracking-widest text-jaguar-gold-light/80 uppercase">
+                      Landline
+                    </span>
+                    <span className="mt-1.5 block">{companyInfo.landline}</span>
+                  </span>
                 </a>
               </li>
               <li>

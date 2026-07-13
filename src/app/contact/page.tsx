@@ -16,14 +16,25 @@ const contactItems = [
   {
     icon: Phone,
     label: "Mobile",
-    content: <p>{companyInfo.phone}</p>,
-    href: `tel:${companyInfo.phone.replace(/\s/g, "")}`,
-  },
-  {
-    icon: Phone,
-    label: "Mobile",
-    content: <p>{companyInfo.phone2}</p>,
-    href: `tel:${companyInfo.phone2.replace(/\s/g, "")}`,
+    content: (
+      <div className="flex flex-col gap-1 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-2">
+        <a
+          href={`tel:${companyInfo.phone.replace(/\s/g, "")}`}
+          className="transition-colors hover:text-jaguar-gold-bright"
+        >
+          {companyInfo.phone}
+        </a>
+        <span className="hidden text-muted sm:inline" aria-hidden="true">
+          ·
+        </span>
+        <a
+          href={`tel:${companyInfo.phone2.replace(/\s/g, "")}`}
+          className="transition-colors hover:text-jaguar-gold-bright"
+        >
+          {companyInfo.phone2}
+        </a>
+      </div>
+    ),
   },
   {
     icon: Phone,

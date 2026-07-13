@@ -7,33 +7,36 @@ const contactItems = [
   {
     icon: Phone,
     label: "Mobile",
-    value: companyInfo.phone,
-    href: `tel:${companyInfo.phone.replace(/\s/g, "")}`,
-  },
-  {
-    icon: Phone,
-    label: "Mobile",
-    value: companyInfo.phone2,
-    href: `tel:${companyInfo.phone2.replace(/\s/g, "")}`,
+    values: [
+      { value: companyInfo.phone, href: `tel:${companyInfo.phone.replace(/\s/g, "")}` },
+      { value: companyInfo.phone2, href: `tel:${companyInfo.phone2.replace(/\s/g, "")}` },
+    ],
   },
   {
     icon: Phone,
     label: "Landline",
-    value: companyInfo.landline,
-    href: `tel:${companyInfo.landline.replace(/\s/g, "")}`,
+    values: [
+      {
+        value: companyInfo.landline,
+        href: `tel:${companyInfo.landline.replace(/\s/g, "")}`,
+      },
+    ],
   },
   {
     icon: Mail,
     label: "Email",
-    value: companyInfo.email,
-    href: `mailto:${companyInfo.email}`,
+    values: [{ value: companyInfo.email, href: `mailto:${companyInfo.email}` }],
   },
   {
     icon: Globe,
     label: "Website",
-    value: "jaguarsecurityservices.co.uk",
-    href: companyInfo.website,
-    external: true,
+    values: [
+      {
+        value: "jaguarsecurityservices.co.uk",
+        href: companyInfo.website,
+        external: true,
+      },
+    ],
   },
 ];
 
@@ -58,26 +61,37 @@ export default function BusinessCard() {
 
             <ul className="mt-5 space-y-4">
               {contactItems.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    {...(item.external
-                      ? { target: "_blank", rel: "noopener noreferrer" }
-                      : {})}
-                    className="group flex items-center gap-3 transition-colors hover:text-jaguar-gold-bright"
-                  >
-                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-jaguar-gold-bright/15 text-jaguar-gold-bright transition-colors group-hover:bg-jaguar-gold-bright group-hover:text-jaguar-black">
+                <li key={item.label}>
+                  <div className="flex items-start gap-3">
+                    <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-jaguar-gold-bright/15 text-jaguar-gold-bright">
                       <item.icon className="h-4 w-4" />
                     </span>
                     <span className="min-w-0">
                       <span className="block text-[0.6rem] font-bold tracking-widest text-muted uppercase">
                         {item.label}
                       </span>
-                      <span className="block truncate text-sm font-semibold text-jaguar-black group-hover:text-jaguar-gold-bright">
-                        {item.value}
+                      <span className="mt-1 flex flex-col gap-1 sm:flex-row sm:flex-wrap sm:items-center sm:gap-x-2">
+                        {item.values.map((entry, index) => (
+                          <span key={entry.href} className="flex items-center gap-2">
+                            {index > 0 && (
+                              <span className="hidden text-muted sm:inline" aria-hidden="true">
+                                ·
+                              </span>
+                            )}
+                            <Link
+                              href={entry.href}
+                              {...(entry.external
+                                ? { target: "_blank", rel: "noopener noreferrer" }
+                                : {})}
+                              className="text-sm font-semibold text-jaguar-black transition-colors hover:text-jaguar-gold-bright"
+                            >
+                              {entry.value}
+                            </Link>
+                          </span>
+                        ))}
                       </span>
                     </span>
-                  </Link>
+                  </div>
                 </li>
               ))}
             </ul>
