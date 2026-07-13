@@ -87,7 +87,7 @@ export default function BusinessCard() {
                           <span key={entry.href} className="flex items-center gap-2">
                             {index > 0 && (
                               <span className="hidden text-muted sm:inline" aria-hidden="true">
-                                ·
+                                /
                               </span>
                             )}
                             <Link

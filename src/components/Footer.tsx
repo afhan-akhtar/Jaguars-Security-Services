@@ -86,7 +86,7 @@ export default function Footer() {
                       {companyInfo.phone}
                     </a>
                     <span className="hidden text-white/25 sm:inline" aria-hidden="true">
-                      ·
+                      /
                     </span>
                     <a
                       href={`tel:${companyInfo.phone2.replace(/\s/g, "")}`}
