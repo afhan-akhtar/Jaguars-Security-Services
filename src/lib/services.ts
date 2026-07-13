@@ -391,10 +391,10 @@ export const testimonials = [
 export const heroImage = "/images/hero.jpg";
 
 export const pageImages = {
-  about: "/images/services/about.jpg",
+  about: "/images/services/about-security-guard.jpg",
   aboutTeam: "/images/services/guarding.jpg",
-  contact: "/images/services/contact.jpg",
+  contact: "/images/services/contact-security-guard.jpg",
   services: "/images/services/security-services-guard.jpg",
-  ctaQuote: "/images/services/office.jpg",
-  ctaExplore: "/images/services/facilities.jpg",
+  ctaQuote: "/images/services/cta-quote-security.jpg",
+  ctaExplore: "/images/services/cta-explore-security.jpg",
 };
