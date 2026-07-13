@@ -265,6 +265,7 @@ export const companyInfo = {
   motto: "Reliable • Flexible • Professional",
   pillars: ["PROTECT", "MONITOR", "RESPOND", "ASSURE"],
   phone: "07804 497664",
+  phone2: "07428 681580",
   landline: "0161 6696786",
   email: "info@jaguarsecurityservices.co.uk",
   website: "https://www.jaguarsecurityservices.co.uk",

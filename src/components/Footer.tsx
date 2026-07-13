@@ -77,6 +77,15 @@ export default function Footer() {
               </li>
               <li>
                 <a
+                  href={`tel:${companyInfo.phone2.replace(/\s/g, "")}`}
+                  className="flex items-start gap-3 text-sm text-white/55 transition-colors hover:text-jaguar-gold-light"
+                >
+                  <Phone className="mt-0.5 h-4 w-4 shrink-0 text-jaguar-gold-light" />
+                  <span>Mobile: {companyInfo.phone2}</span>
+                </a>
+              </li>
+              <li>
+                <a
                   href={`tel:${companyInfo.landline.replace(/\s/g, "")}`}
                   className="flex items-start gap-3 text-sm text-white/55 transition-colors hover:text-jaguar-gold-light"
                 >
