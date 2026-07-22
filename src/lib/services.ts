@@ -358,13 +358,6 @@ export const heroServices: HeroService[] = [
     image: "/images/services/key-holding-services.jpg",
     imagePosition: "top",
   },
-  {
-    slug: "facilities",
-    title: "Facilities Support",
-    description:
-      "Reception, concierge and visitor management for seamless front-of-house operations.",
-    image: "/images/services/facility-support-services.jpg",
-  },
 ];
 
 export const stats = [
